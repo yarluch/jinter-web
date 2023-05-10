@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "recommendations": "Recommendations",
+    "about": "About Us",
+    "search": "Search..."
+  },
+  "main": {
+    "popular": "Popular",
+    "lists": "Lists"
+  }
+}

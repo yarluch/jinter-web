@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "recommendations": "Рекомендації",
+    "about": "Про нас",
+    "search": "Пошук..."
+  },
+  "main": {
+    "popular": "Популярне",
+    "lists": "Списки"
+  }
+}

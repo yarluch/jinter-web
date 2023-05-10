@@ -1,0 +1,117 @@
+:host {
+  position: fixed;
+  width: 100%;
+}
+
+.menu-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: var(--bg-accent-color);
+}
+
+.menu-links, .additional-actions {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  padding: 0;
+}
+
+.link {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.link:first-of-type {
+  margin-right: 40px;
+}
+
+.link > a, .language-button {
+  text-decoration: none;
+  font-size: 22px;
+  font-family: var(--headers-font);
+  font-weight: var(--headers-font-weight);
+  color: var(--font-color);
+}
+
+.link > a:hover, .language-button:hover {
+  opacity: .8;
+}
+
+.language-button {
+  outline: none;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.language-button {
+  font-family: var(--headers-font);
+  color: var(--font-color);
+}
+
+.language-buttons-group {
+  position: relative;
+}
+
+.menu-divider {
+  border-left: 2px solid var(--font-color);
+}
+
+.menu-divider {
+  height: 120%;
+  position: absolute;
+  left: 50%;
+  margin-left: -1px;
+  top: -10%;
+  border-radius: 2px;
+}
+
+.search-group {
+  background: var(--searchbar-bg-color);
+}
+
+.search-group:hover {
+  background: var(--searchbar-bg-color-hover);
+}
+
+.search-group {
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.search-group > img {
+  height: 26px;
+  width: 26px;
+  margin: 9px;
+  cursor: pointer;
+}
+
+.searchbar {
+  font-family: var(--headers-font);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--font-color);
+}
+
+.searchbar {
+  background: none;
+  outline: none;
+  border: none;
+  padding: 9px 0;
+  width: 0;
+  transition: all .3s ease-out;
+}
+
+.searchbar::placeholder {
+  color: var(--games-font-color);
+}
+
+.search-group.active > .searchbar {
+  width: 385px;
+  padding: 9px 18px 9px 0;
+  transition: all .3s ease-in;
+}
+

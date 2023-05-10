@@ -1,0 +1,40 @@
+
+
+.content-wrapper.games {
+  --bg-color: #1D2341;
+  --bg-accent-color: #051439;
+
+  --font-color: #fff;
+  --searchbar-bg-color: #4B236A;
+  --searchbar-bg-color-hover: #3b1a56;
+
+  --card-color-1: #E2842C;
+  --card-color-2: #72389F;
+  --card-color-3: #CF2D2D;
+  --card-color-4: #DA67DC;
+
+  --headers-font: 'Play', sans-serif;
+  --headers-font-weight: 700;
+
+  background: var(--bg-color);
+}
+
+:host ::ng-deep h1,
+:host ::ng-deep h2,
+:host ::ng-deep h3,
+:host ::ng-deep h4,
+:host ::ng-deep h5,
+:host ::ng-deep h6 {
+  font-family: 'Play', sans-serif;
+  font-weight: 700;
+  color: var(--games-font-color);
+}
+
+:host ::ng-deep h2 {
+  font-size: 32px;
+}
+/*--------------------------------------*/
+.section-wrapper {
+  margin: 0 200px;
+  padding: 25px 0;
+}

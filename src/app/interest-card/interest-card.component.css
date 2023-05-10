@@ -1,0 +1,9 @@
+.card-wrapper {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  aspect-ratio:7/10;
+}
+.card-image {
+  object-fit: cover;
+}

@@ -1,0 +1,37 @@
+.slider{
+  position: relative;
+  margin: 0 -7px;
+}
+
+:host ::ng-deep .slider .slick-arrow {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  margin: -40px -50px;
+  z-index: 10;
+  font-size: 0;
+  width: 40px;
+  height: 80px;
+  transition: opacity .2s ease-in;
+}
+
+:host ::ng-deep .slider .slick-arrow.slick-disabled {
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+:host ::ng-deep .slider .slick-arrow.slick-prev {
+  left: 0;
+  background: url("../../assets/img/slider/left-chevron.png") 0 0 / 100% no-repeat;
+}
+
+:host ::ng-deep .slider .slick-arrow.slick-next {
+  right: 0;
+  background: url("../../assets/img/slider/right-chevron.png") 0 0 / 100% no-repeat;
+}
+
+:host ::ng-deep .slick-slide {
+  margin: 0 7px;
+}

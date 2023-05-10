@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+html {
+  height: 100%;
+}
+
+body {
+  --border-radius: 10px;
+
+  --games-bg-color: #1D2341;
+  --games-bg-accent-color: #051439;
+
+  --games-font-color: #fff;
+  --games-searchbar-bg-color: #4B236A;
+  --games-searchbar-bg-color-hover: #3b1a56;
+
+  --games-card-color-1: #E2842C;
+  --games-card-color-2: #72389F;
+  --games-card-color-3: #CF2D2D;
+  --games-card-color-4: #DA67DC;
+
+  --games-headers-font: 'Play', sans-serif;
+  --games-headers-font-weight: 700;
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+app-root {
+  display: block;
+  height:100%
+}
+
+/*--- Slick ---*/
+.slick-list {
+  overflow: hidden;
+}
+
+.slick-track {
+  display: flex;
+}

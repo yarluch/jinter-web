@@ -1,0 +1,29 @@
+<header class="menu-wrapper">
+  <ul class="menu-links">
+    <li class="link logo">
+      <a href="#"><img ngSrc="assets/img/logo/logo_{{storageService.getCurrentInterest()}}.png" height="42" width="98" alt="logo"></a>
+    </li>
+    <li class="link">
+      <a href="#">{{ 'menu.recommendations' | translate }}</a>
+    </li>
+    <li class="link">
+      <a href="#">{{ 'menu.about' | translate }}</a>
+    </li>
+  </ul>
+  <div class="additional-actions">
+    <div class="search-group" [class]="isSearchActive ? 'active' : ''">
+      <img src="assets/img/menu/search-icon.png"
+           alt="{{ 'menu.search' | translate }}"
+      (click)="changeSearchActivity()">
+      <input type="text" name="" id="input-search" class="searchbar"
+             placeholder="{{ 'menu.search' | translate }}"
+             (keydown.enter)="console.log('')"><!--$event.target.value ??-->
+    </div>
+    <div class="language-buttons-group">
+      <button class="language-button" (click)="changeLocale('uk')">UA</button>
+      <div class="menu-divider"></div>
+      <button class="language-button" (click)="changeLocale('en')">EN</button>
+    </div>
+    <div class="login-buttons-group"></div>
+  </div>
+</header>
