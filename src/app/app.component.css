@@ -1,6 +1,10 @@
-
-
-.content-wrapper.games {
+:host {
+  display: block;
+  box-sizing: border-box;
+  height: calc(100vh - 71px);
+  overflow: auto;
+}
+:host.games {
   --bg-color: #1D2341;
   --bg-accent-color: #051439;
 
@@ -13,11 +17,36 @@
   --card-color-3: #CF2D2D;
   --card-color-4: #DA67DC;
 
-  --headers-font: 'Play', sans-serif;
-  --headers-font-weight: 700;
+  --headings-font: 'Play', sans-serif;
+  --headings-font-weight: 700;
 
+  --content-font: 'Inter', sans-serif;;
+  --content-font-weight: 400;
+
+  --scrollbar-bg-color: #fff;
+  --scrollbar-bg-color-hover: rgba(255, 255, 255, 0.7);
+
+  margin-top: 71px;
+  padding-top: 30px;
   background: var(--bg-color);
 }
+
+:host::-webkit-scrollbar {
+  width: 14px;
+}
+:host::-webkit-scrollbar-track {
+  background-color: transparent;
+  padding: 5px;
+}
+:host::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-bg-color);
+  border: 3px solid var(--bg-color);
+  border-radius: 14px;
+}
+:host::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-bg-color-hover);
+}
+
 
 :host ::ng-deep h1,
 :host ::ng-deep h2,
@@ -25,16 +54,29 @@
 :host ::ng-deep h4,
 :host ::ng-deep h5,
 :host ::ng-deep h6 {
-  font-family: 'Play', sans-serif;
-  font-weight: 700;
-  color: var(--games-font-color);
+  font-family: var(--headings-font);
+  font-weight: var(--headings-font-weight);
+  color: var(--font-color);
+  margin-top: 0;
 }
 
 :host ::ng-deep h2 {
   font-size: 32px;
 }
-/*--------------------------------------*/
-.section-wrapper {
-  margin: 0 200px;
-  padding: 25px 0;
+
+:host ::ng-deep h3 {
+  font-size: 26px;
 }
+
+:host ::ng-deep p {
+  color: var(--font-color);
+  font-family: var(--content-font);
+  font-weight: var(--content-font-weight);
+}
+
+.main-content-wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+

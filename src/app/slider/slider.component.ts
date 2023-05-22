@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit, QueryList, ViewChildren, ViewContainerRef} from '@angular/core';
 import {SliderItemSize} from "../enums/SliderItemSize";
 import {InterestCardData} from "../interfaces/InterestCardData";
-import {InterestCardComponent} from "../interest-card/interest-card.component";
+import {InterestCardComponent} from "../cards/interest-card/interest-card.component";
 
 declare let $: any;
 
@@ -10,14 +10,18 @@ declare let $: any;
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.css']
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent implements AfterViewInit {
+  static lastSliderIndex = -1;
+  sliderIndex: number
   @Input('item-size')
   itemSize = SliderItemSize.SMALL
 
-  constructor() { }
+  constructor() {
+    this.sliderIndex = ++SliderComponent.lastSliderIndex
+  }
 
-  ngOnInit(): void {
-    $('.slider').slick({
+  ngAfterViewInit(): void {
+    $('#slider-' + this.sliderIndex).slick({
       infinite: false,
       slidesToShow: this.getItemsAmountToShow(),
       slidesToScroll: this.getItemsAmountToShow()
@@ -38,4 +42,6 @@ export class SliderComponent implements OnInit {
         return 1
     }
   }
+
+
 }

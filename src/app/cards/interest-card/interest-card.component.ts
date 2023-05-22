@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
-import {InterestCardData} from "../interfaces/InterestCardData";
+import {InterestCardData} from "../../interfaces/InterestCardData";
 import {style} from "@angular/animations";
 
 @Component({

@@ -1,5 +1,7 @@
 :host {
   position: fixed;
+  z-index: 100;
+  top: 0;
   width: 100%;
 }
 
@@ -30,8 +32,8 @@
 .link > a, .language-button {
   text-decoration: none;
   font-size: 22px;
-  font-family: var(--headers-font);
-  font-weight: var(--headers-font-weight);
+  font-family: var(--headings-font);
+  font-weight: var(--headings-font-weight);
   color: var(--font-color);
 }
 
@@ -47,7 +49,7 @@
 }
 
 .language-button {
-  font-family: var(--headers-font);
+  font-family: var(--headings-font);
   color: var(--font-color);
 }
 
@@ -90,7 +92,7 @@
 }
 
 .searchbar {
-  font-family: var(--headers-font);
+  font-family: var(--headings-font);
   font-size: 22px;
   font-weight: 400;
   color: var(--font-color);
@@ -102,16 +104,18 @@
   border: none;
   padding: 9px 0;
   width: 0;
-  transition: all .3s ease-out;
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-short);
 }
 
 .searchbar::placeholder {
-  color: var(--games-font-color);
+  color: var(--font-color);
 }
 
 .search-group.active > .searchbar {
   width: 385px;
   padding: 9px 18px 9px 0;
-  transition: all .3s ease-in;
+  transition-duration: var(--transition-medium-2);
 }
 

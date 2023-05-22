@@ -1,9 +1,7 @@
-<div class="card-wrapper" >
+<a class="card-wrapper" [routerLink]="['interest', data['id']]">
   <div class="interest-details">
     <h3 class="interest-title">{{data['name']}}</h3>
-    <p class="interest-details">{{data['description']}}</p>
+    <p>{{data['description']}}</p>
   </div>
   <img class="card-image" ngSrc="{{data['mainPhotoUrl']}}" fill alt="{{data['name']}}">
-</div>
-<!--
-[ngStyle]="getCardSize()"-->
+</a>
