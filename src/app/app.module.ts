@@ -15,6 +15,8 @@ import {HomePageComponent} from './pages/home-page/home-page.component';
 import {AboutPageComponent} from './pages/about-page/about-page.component';
 import { ListCardComponent } from './cards/list-card/list-card.component';
 import { InterestPageComponent } from './pages/interest-page/interest-page.component';
+import { AuthorCardComponent } from './cards/author-card/author-card.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { InterestPageComponent } from './pages/interest-page/interest-page.compo
     HomePageComponent,
     AboutPageComponent,
     ListCardComponent,
-    InterestPageComponent
+    InterestPageComponent,
+    AuthorCardComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,10 @@ import { InterestPageComponent } from './pages/interest-page/interest-page.compo
       {
         path: 'interest/:interestId',
         component: InterestPageComponent
+      },
+      {
+        path: 'profile/:userId',
+        component: ProfilePageComponent
       }
     ])
   ],

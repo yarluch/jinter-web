@@ -17,11 +17,10 @@
   --card-color-3: #CF2D2D;
   --card-color-4: #DA67DC;
 
-  --headings-font: 'Play', sans-serif;
-  --headings-font-weight: 700;
+  --author-card-bg-color-1: #72389F;
+  --author-card-bg-color-2: #4B236A;
 
-  --content-font: 'Inter', sans-serif;;
-  --content-font-weight: 400;
+  --button-primary-gradient-bg: linear-gradient(to right, #DA67DC 0%, #E2842C 51%, #DA67DC 100%);
 
   --scrollbar-bg-color: #fff;
   --scrollbar-bg-color-hover: rgba(255, 255, 255, 0.7);
@@ -72,7 +71,40 @@
   color: var(--font-color);
   font-family: var(--content-font);
   font-weight: var(--content-font-weight);
+  font-size: 18px;
 }
+
+:host ::ng-deep .username {
+  font-family: var(--accent-font);
+  font-weight: var(--accent-font-weight);
+}
+
+:host ::ng-deep .button {
+  color: var(--font-color);
+  font-family: var(--content-font);
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-medium-1);
+}
+
+:host ::ng-deep .button-primary:hover {
+  background-position: right center;
+  box-shadow: none;
+}
+
+:host ::ng-deep .button-primary {
+  background: var(--button-primary-gradient-bg);
+  background-size: 200% auto;
+}
+
 
 .main-content-wrapper {
   max-width: 1500px;

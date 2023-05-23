@@ -87,7 +87,7 @@
 .search-group > img {
   height: 26px;
   width: 26px;
-  margin: 9px;
+  padding: 9px;
   cursor: pointer;
 }
 

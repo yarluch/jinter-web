@@ -6,6 +6,7 @@
   },
   "main": {
     "popular": "Popular",
-    "lists": "Lists"
+    "lists": "Lists",
+    "popular_authors": "Popular Authors"
   }
 }

@@ -1,0 +1,13 @@
+<div class="card-wrapper"
+     [class.alternative-style]="altStyle">
+  <img class="author-photo"
+       ngSrc="{{data['photoUrl']}}"
+       height="200"
+       width="200"
+       alt="user photo">
+  <a class="username-link" [routerLink]="['profile', data['id']]">
+    <h3 class="username">{{'@' + data['userName']}}</h3>
+  </a>
+  <p>{{data['description']}}</p>
+  <button class="button button-primary" type="submit">Підписатись</button>
+</div>

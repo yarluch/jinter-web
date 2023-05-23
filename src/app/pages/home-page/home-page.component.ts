@@ -10,6 +10,7 @@ export class HomePageComponent implements OnInit {
   popularInterests: Array<any> = [];
 
   protected readonly SliderSizeSmall = SliderItemSize.SMALL;
+  protected readonly SliderSizeMedium = SliderItemSize.MEDIUM;
   protected readonly SliderSizeBig = SliderItemSize.BIG;
 
   constructor() {

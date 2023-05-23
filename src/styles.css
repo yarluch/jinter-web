@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Oswald:wght@400;500&family=Play:wght@400;700&display=swap');
 
 body {
   --border-radius: 10px;
@@ -9,6 +9,15 @@ body {
   --transition-long: .5s;
 
   --transition-function-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  --headings-font: 'Play', sans-serif;
+  --headings-font-weight: 700;
+
+  --content-font: 'Inter', sans-serif;;
+  --content-font-weight: 400;
+
+  --accent-font: 'Oswald', sans-serif;
+  --accent-font-weight: 400;
 
   margin: 0;
   padding: 0;
