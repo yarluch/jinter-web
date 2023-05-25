@@ -1,4 +1,6 @@
 <top-menu></top-menu>
+<interest-switch (interest-changer)="changeInterest($event)"
+                 (content-hider)="changeContentVisibility()"></interest-switch>
 <div class="main-content-wrapper">
   <router-outlet></router-outlet>
 </div>

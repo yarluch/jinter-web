@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalStorageDataService} from "../services/local-storage-data.service";
 import {TranslateService} from "@ngx-translate/core";
+import {Locale} from "../types/types";
 
 @Component({
   selector: 'top-menu',
@@ -16,7 +17,7 @@ export class TopMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeLocale(locale: string) {
+  changeLocale(locale: Locale) {
     this.translateService.use(locale);
     this.storageService.saveCurrentLocale(locale);
   }

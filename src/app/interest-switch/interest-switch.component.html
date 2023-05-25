@@ -1,0 +1,26 @@
+<div class="switcher-wrapper" [class.active]="isSwitcherActive">
+  <button class="interest-shower switcher-button" (click)="changeSwitcherState()">
+    <span class="arrow">
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+  <div class="interest-buttons">
+    <button class="switcher-button"
+            [class.active]="currentInterest == 'games'"
+            (click)="changeInterest('games')">
+      <img ngSrc="./assets/img/interest-switcher/games.png" alt="games" height="128" width="128">
+    </button>
+    <button class="switcher-button"
+            [class.active]="currentInterest == 'books'"
+            (click)="changeInterest('books')">
+      <img ngSrc="./assets/img/interest-switcher/books.png" alt="books" height="128" width="128">
+    </button>
+    <button class="switcher-button"
+            [class.active]="currentInterest == 'films'"
+            (click)="changeInterest('films')">
+      <img ngSrc="./assets/img/interest-switcher/films.png" alt="films" height="128" width="128">
+    </button>
+  </div>
+
+</div>

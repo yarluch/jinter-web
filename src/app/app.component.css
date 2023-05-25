@@ -1,12 +1,17 @@
 :host {
+  --button-gradient-background-size: 200% auto;
+
   display: block;
   box-sizing: border-box;
   height: calc(100vh - 71px);
   overflow: auto;
 }
-:host.games {
+
+:host.games, :host.books {
   --bg-color: #1D2341;
   --bg-accent-color: #051439;
+  --blackout-color: #1D234199;
+
 
   --font-color: #fff;
   --searchbar-bg-color: #4B236A;
@@ -28,6 +33,35 @@
   margin-top: 71px;
   padding-top: 30px;
   background: var(--bg-color);
+}
+
+:host::before {
+  content: ' ';
+  background: var(--blackout-color);
+  backdrop-filter: blur(2px);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-short);
+}
+
+:host(.hidden-content)::before {
+  z-index: 101;
+}
+
+:host(.hidden-interface)::before {
+  z-index: 110;
+}
+
+:host(.hidden-content)::before,
+:host(.hidden-interface)::before {
+  opacity: 1;
+  transition-duration: var(--transition-medium-2);
 }
 
 :host::-webkit-scrollbar {
@@ -102,7 +136,7 @@
 
 :host ::ng-deep .button-primary {
   background: var(--button-primary-gradient-bg);
-  background-size: 200% auto;
+  background-size: var(--button-gradient-background-size);
 }
 
 

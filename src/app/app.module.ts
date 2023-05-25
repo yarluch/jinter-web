@@ -17,6 +17,7 @@ import { ListCardComponent } from './cards/list-card/list-card.component';
 import { InterestPageComponent } from './pages/interest-page/interest-page.component';
 import { AuthorCardComponent } from './cards/author-card/author-card.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { InterestSwitchComponent } from './interest-switch/interest-switch.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     ListCardComponent,
     InterestPageComponent,
     AuthorCardComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    InterestSwitchComponent
   ],
   imports: [
     BrowserModule,

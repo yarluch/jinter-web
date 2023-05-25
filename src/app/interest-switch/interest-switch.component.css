@@ -1,0 +1,155 @@
+:host {
+  position: fixed;
+  z-index: 102;
+}
+.switcher-wrapper {
+  position: fixed;
+  height: 60px;
+  width: 60px;
+  padding-left: 10px;
+  top: calc(50% - 30px);
+  left: -40px;
+  overflow: visible;
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-short);
+}
+
+.switcher-wrapper:hover, .switcher-wrapper.active {
+  left: 0;
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-medium-2);
+}
+
+.switcher-wrapper * {
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-short);
+}
+
+.switcher-wrapper.active * {
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-medium-2);
+}
+
+.switcher-button {
+  height: 100%;
+  aspect-ratio: 1/1;
+  width: auto;
+  position: absolute;
+  border: none;
+  border-radius: 100%;
+  background: var(--bg-accent-color);
+}
+
+.switcher-button:not(.active) {
+  cursor: pointer;
+}
+
+.interest-shower {
+  z-index: 1;
+}
+
+.interest-buttons {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  right: 0;
+}
+
+.interest-buttons > .switcher-button {
+  margin: 1px;
+  height: calc(100% - 2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--searchbar-bg-color);
+}
+
+.interest-buttons > .switcher-button > img {
+  height: 65%;
+  width: auto;
+  aspect-ratio: 1/1;
+}
+
+.interest-buttons > .switcher-button:not(.active):hover > img {
+  opacity: 0.7;
+}
+
+.interest-buttons > .switcher-button.active {
+  background: var(--button-primary-gradient-bg);
+  background-size: var(--button-gradient-background-size);
+}
+
+.switcher-wrapper.active .interest-buttons {
+  height: 120%;
+  margin: 0;
+}
+
+.switcher-wrapper.active .interest-buttons > button:nth-of-type(1) {
+  transform: translateX(70px) translateY(-100px);
+  /*background: var(--card-color-1);*/
+}
+
+.switcher-wrapper.active .interest-buttons > button:nth-of-type(2) {
+  transform: translateX(170px);
+  /*background: var(--card-color-2);*/
+}
+
+.switcher-wrapper.active .interest-buttons > button:nth-of-type(3) {
+  transform: translateX(70px) translateY(100px);
+  /*background: var(--card-color-3);*/
+}
+
+/* Animated arrow */
+.arrow {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  display: inline-block;
+  position: relative;
+}
+.arrow > span {
+  position: absolute;
+  width: 23px;
+  height: 6px;
+  border-radius: 6px;
+  background-color: #efefef;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  display: inline-block;
+}
+
+.arrow > span:first-of-type {
+  transform: rotate(45deg) translateY(-6px) translateX(-3px);
+}
+
+.arrow > span:last-of-type {
+  transform: rotate(-45deg) translateY(6px) translateX(-3px);
+}
+
+.switcher-wrapper:hover .arrow > span:first-of-type {
+  transform: rotate(45deg) translateY(3px) translateX(-12px);
+}
+
+.switcher-wrapper:hover .arrow > span:last-of-type {
+  transform: rotate(-45deg) translateY(-3px) translateX(-12px);
+}
+
+.switcher-wrapper.active .arrow > span{
+  margin: 0 auto;
+  width: 40px;
+}
+.switcher-wrapper.active .arrow > span:first-of-type {
+  transform: rotate(-45deg) translateY(-14px) translateX(-14px);
+}
+
+.switcher-wrapper.active .arrow > span:last-of-type {
+  transform: rotate(45deg) translateY(14px) translateX(-14px);
+}
