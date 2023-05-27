@@ -140,7 +140,8 @@
 }
 
 
-.main-content-wrapper {
+:host ::ng-deep .main-content-wrapper {
+  display: block;
   max-width: 1500px;
   margin: 0 auto;
 }

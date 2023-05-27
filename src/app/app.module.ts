@@ -52,19 +52,19 @@ import { InterestSwitchComponent } from './interest-switch/interest-switch.compo
         component: HomePageComponent
       },
       {
-        path: ':interestType',
+        path: ':interest-type',
         component: HomePageComponent
       },
       {
-        path: 'about',
+        path: ':interest-type/about',
         component: AboutPageComponent
       },
       {
-        path: 'interest/:interestId',
+        path: ':interest-type/interest/:interestId',
         component: InterestPageComponent
       },
       {
-        path: 'profile/:userId',
+        path: ':interest-type/profile/:userId',
         component: ProfilePageComponent
       }
     ])

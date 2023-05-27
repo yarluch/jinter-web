@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {SliderItemSize} from "../../enums/SliderItemSize";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {LocalStorageDataService} from "../../services/local-storage-data.service";
+import {Interest} from "../../types/types";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'home-page',
@@ -13,7 +17,15 @@ export class HomePageComponent implements OnInit {
   protected readonly SliderSizeMedium = SliderItemSize.MEDIUM;
   protected readonly SliderSizeBig = SliderItemSize.BIG;
 
-  constructor() {
+  @HostBinding('class') class!: string;
+  private isPopstate: Boolean = false;
+
+  constructor(private router: Router, private route: ActivatedRoute,
+              private location: Location,
+              private storageService: LocalStorageDataService) {
+    this.class = "main-content-wrapper"
+
+
     this.popularInterests.push({
       id: '12-23231',
       name: 'Genshin Impact',
@@ -29,6 +41,30 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.setRedirection(params)
+    })
   }
 
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: Event) {
+    this.isPopstate = true;
+  }
+
+  setRedirection(params: Params) {
+    if (!params.hasOwnProperty('interest-type') || !<Interest>params['interest-type']) {
+      this.location.replaceState(`/${this.storageService.getCurrentInterest()}`);
+      return;
+    }
+    if (<Interest>params['interest-type'] != this.storageService.getCurrentInterest()) {
+      this.storageService.saveCurrentInterest(<Interest>params['interest-type']);
+    }
+
+    this.storageService.getCurrentInterestObserver().subscribe(interest => {
+      if (<Interest>params['interest-type'] != this.storageService.getCurrentInterest()
+          && !this.isPopstate) {
+        this.router.navigate([`/${interest}`])
+      }
+    })
+  }
 }

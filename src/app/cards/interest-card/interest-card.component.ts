@@ -1,6 +1,5 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {InterestCardData} from "../../interfaces/InterestCardData";
-import {style} from "@angular/animations";
 
 @Component({
   selector: 'interest-card',

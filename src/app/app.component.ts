@@ -18,10 +18,11 @@ export class AppComponent implements OnInit {
   isPageContentHidden = false;
   isInterfaceHidden = false;
 
-  @HostBinding('class') class;
+  @HostBinding('class') class!: string;
 
   constructor(private translateService: TranslateService, private storageService: LocalStorageDataService) {
-    this.class = storageService.getCurrentInterest();
+    storageService.getCurrentInterestObserver().subscribe(interest => this.class = interest)
+    /*this.class = storageService.getCurrentInterest();*/
   }
 
   ngOnInit(): void {
@@ -29,7 +30,8 @@ export class AppComponent implements OnInit {
   }
 
   changeInterest(interest: Interest) {
-    this.class = this.storageService.saveCurrentInterest(interest);
+    /*this.class = this.storageService.saveCurrentInterest(interest);*/
+    this.storageService.saveCurrentInterest(interest);
   }
 
   changeContentVisibility() {

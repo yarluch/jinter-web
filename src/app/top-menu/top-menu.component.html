@@ -1,13 +1,13 @@
 <header class="menu-wrapper">
   <ul class="menu-links">
     <li class="link logo">
-      <a href="#"><img ngSrc="assets/img/logo/logo_{{storageService.getCurrentInterest()}}.png" height="42" width="98" alt="logo"></a>
+      <a routerLink="{{'/' + currentInterest}}"><img [class]="currentInterest" [src]="'assets/img/logo/logo_' + currentInterest + '.png'" alt="logo"></a>
     </li>
-    <li class="link">
-      <a href="#">{{ 'menu.recommendations' | translate }}</a>
+    <li class="link" routerLinkActive="active">
+      <a routerLink="{{'/' + currentInterest}}">{{ 'menu.recommendations' | translate }}</a>
     </li>
-    <li class="link">
-      <a href="#">{{ 'menu.about' | translate }}</a>
+    <li class="link" routerLinkActive="active">
+      <a routerLink="{{'/' + currentInterest + '/about'}}">{{ 'menu.about' | translate }}</a>
     </li>
   </ul>
   <div class="additional-actions">

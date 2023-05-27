@@ -9,7 +9,7 @@ import {LocalStorageDataService} from "../services/local-storage-data.service";
 })
 export class InterestSwitchComponent implements OnInit {
   isSwitcherActive = false;
-  currentInterest: Interest;
+  currentInterest!: Interest;
 
   @Output('interest-changer')
   changeInterestEmitter = new EventEmitter(true)
@@ -18,7 +18,7 @@ export class InterestSwitchComponent implements OnInit {
   changeContentVisibility = new EventEmitter()
 
   constructor(private storageService: LocalStorageDataService) {
-    this.currentInterest = storageService.getCurrentInterest();
+    storageService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
   }
 
   ngOnInit(): void {
@@ -32,7 +32,6 @@ export class InterestSwitchComponent implements OnInit {
 
   changeInterest(interest: Interest) {
     this.changeSwitcherState();
-    this.currentInterest = interest;
     this.changeInterestEmitter.emit(interest);
   }
 }

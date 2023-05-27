@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalStorageDataService} from "../services/local-storage-data.service";
 import {TranslateService} from "@ngx-translate/core";
-import {Locale} from "../types/types";
+import {Interest, Locale} from "../types/types";
 
 @Component({
   selector: 'top-menu',
@@ -11,7 +11,9 @@ import {Locale} from "../types/types";
 export class TopMenuComponent implements OnInit {
 
   isSearchActive = false
+  currentInterest!: Interest;
   constructor(public storageService: LocalStorageDataService, private translateService: TranslateService) {
+    storageService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
   }
 
   ngOnInit() {
