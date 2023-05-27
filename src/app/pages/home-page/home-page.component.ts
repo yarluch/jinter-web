@@ -1,8 +1,7 @@
-import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {SliderItemSize} from "../../enums/SliderItemSize";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {LocalStorageDataService} from "../../services/local-storage-data.service";
-import {Interest} from "../../types/types";
+import {ActivatedRoute, Router} from "@angular/router";
+import {InterestControllerService} from "../../services/interest-controller.service";
 import {Location} from "@angular/common";
 
 @Component({
@@ -18,11 +17,10 @@ export class HomePageComponent implements OnInit {
   protected readonly SliderSizeBig = SliderItemSize.BIG;
 
   @HostBinding('class') class!: string;
-  private isPopstate: Boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute,
               private location: Location,
-              private storageService: LocalStorageDataService) {
+              private interestControllerService: InterestControllerService) {
     this.class = "main-content-wrapper"
 
 
@@ -42,29 +40,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.setRedirection(params)
-    })
-  }
-
-  @HostListener('window:popstate', ['$event'])
-  onPopState(event: Event) {
-    this.isPopstate = true;
-  }
-
-  setRedirection(params: Params) {
-    if (!params.hasOwnProperty('interest-type') || !<Interest>params['interest-type']) {
-      this.location.replaceState(`/${this.storageService.getCurrentInterest()}`);
-      return;
-    }
-    if (<Interest>params['interest-type'] != this.storageService.getCurrentInterest()) {
-      this.storageService.saveCurrentInterest(<Interest>params['interest-type']);
-    }
-
-    this.storageService.getCurrentInterestObserver().subscribe(interest => {
-      if (<Interest>params['interest-type'] != this.storageService.getCurrentInterest()
-          && !this.isPopstate) {
-        this.router.navigate([`/${interest}`])
-      }
+      this.interestControllerService.configureLinkAccess(params)
     })
   }
 }

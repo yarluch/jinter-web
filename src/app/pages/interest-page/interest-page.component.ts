@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Interest} from "../../types/types";
 import {Location} from "@angular/common";
-import {LocalStorageDataService} from "../../services/local-storage-data.service";
+import {InterestControllerService} from "../../services/interest-controller.service";
+
 
 @Component({
   selector: 'interest-page',
@@ -11,29 +12,24 @@ import {LocalStorageDataService} from "../../services/local-storage-data.service
 })
 export class InterestPageComponent implements OnInit {
 
+  @HostBinding('class') class!: string;
+
   constructor(private router: Router, private route: ActivatedRoute,
               private location: Location,
-              private storageService: LocalStorageDataService) { }
+              private interestControllerService: InterestControllerService) {
+    this.class = "main-content-wrapper"
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.setRedirection(params)
+      this.interestControllerService.configureLinkAccess(params)
     })
   }
 
   setRedirection(params: Params) {
-    let isRedirected = false
-    if (<Interest>params['interest-type'] != this.storageService.getCurrentInterest()) {
-      this.storageService.saveCurrentInterest(<Interest>params['interest-type']);
+    if (<Interest>params['interest-type'] != this.interestControllerService.getCurrentInterest()) {
+      this.interestControllerService.saveCurrentInterest(<Interest>params['interest-type']);
     }
-    this.storageService.getCurrentInterestObserver().subscribe(interest =>{
-      if (!isRedirected &&
-        <Interest>params['interest-type'] != this.storageService.getCurrentInterest()) {
-        console.error("interest " + interest)
-        isRedirected = true;
-        this.router.navigate([`/${interest}`])
-      }
-    });
   }
 
 }

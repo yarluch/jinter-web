@@ -1,2 +1,2 @@
-export type Interest = 'games' | 'books' | 'films';
+export type Interest = 'games' | 'books' | 'movies';
 export type Locale = 'en-GB' | 'ua';

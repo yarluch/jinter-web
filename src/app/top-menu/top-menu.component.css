@@ -41,6 +41,10 @@
   opacity: .8;
 }
 
+.link.active > a {
+  color: var(--link-active-color);
+}
+
 .language-button {
   outline: none;
   border: 0;

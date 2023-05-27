@@ -18,6 +18,9 @@ import { InterestPageComponent } from './pages/interest-page/interest-page.compo
 import { AuthorCardComponent } from './cards/author-card/author-card.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { InterestSwitchComponent } from './interest-switch/interest-switch.component';
+import { LoginSingUpPageComponent } from './pages/login-sign-up-page/login-sing-up-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import {environment} from "../environments/environment.prod";
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { InterestSwitchComponent } from './interest-switch/interest-switch.compo
     InterestPageComponent,
     AuthorCardComponent,
     ProfilePageComponent,
-    InterestSwitchComponent
+    InterestSwitchComponent,
+    LoginSingUpPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,20 +57,36 @@ import { InterestSwitchComponent } from './interest-switch/interest-switch.compo
         component: HomePageComponent
       },
       {
+        path: `${environment.LOGIN_PAGE_PATH}`,
+        component: LoginSingUpPageComponent
+      },
+      {
+        path: `${environment.SIGN_UP_PAGE_PATH}`,
+        component: LoginSingUpPageComponent
+      },
+      {
+        path: `${environment.NOT_FOUND_PAGE_PATH}`,
+        component: NotFoundPageComponent
+      },
+      {
         path: ':interest-type',
         component: HomePageComponent
       },
       {
-        path: ':interest-type/about',
+        path: `:interest-type/${environment.ABOUT_PAGE_PATH}`,
         component: AboutPageComponent
       },
       {
-        path: ':interest-type/interest/:interestId',
+        path: `:interest-type/${environment.INTEREST_PAGE_PATH}/:interestId`,
         component: InterestPageComponent
       },
       {
-        path: ':interest-type/profile/:userId',
+        path: `:interest-type/${environment.PROFILE_PAGE_PATH}/:userId`,
         component: ProfilePageComponent
+      },
+      {
+        path: '**',
+        component: NotFoundPageComponent
       }
     ])
   ],

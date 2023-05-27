@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Interest} from "../types/types";
-import {LocalStorageDataService} from "../services/local-storage-data.service";
+import {InterestControllerService} from "../services/interest-controller.service";
 
 @Component({
   selector: 'interest-switch',
@@ -17,8 +17,8 @@ export class InterestSwitchComponent implements OnInit {
   @Output('content-hider')
   changeContentVisibility = new EventEmitter()
 
-  constructor(private storageService: LocalStorageDataService) {
-    storageService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
+  constructor(private interestControllerService: InterestControllerService) {
+    interestControllerService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
   }
 
   ngOnInit(): void {

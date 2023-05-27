@@ -1,7 +1,8 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
-import {LocalStorageDataService} from "./services/local-storage-data.service";
+import {InterestControllerService} from "./services/interest-controller.service";
 import {Interest} from "./types/types";
+import {LocalDataSaverService} from "./services/local-data-saver.service";
 
 @Component({
   selector: 'app-root',
@@ -20,18 +21,18 @@ export class AppComponent implements OnInit {
 
   @HostBinding('class') class!: string;
 
-  constructor(private translateService: TranslateService, private storageService: LocalStorageDataService) {
-    storageService.getCurrentInterestObserver().subscribe(interest => this.class = interest)
-    /*this.class = storageService.getCurrentInterest();*/
+  constructor(private translateService: TranslateService,
+              private localDataSaverService : LocalDataSaverService,
+              private interestControllerService: InterestControllerService) {
+    interestControllerService.getCurrentInterestObserver().subscribe(interest => this.class = interest)
   }
 
   ngOnInit(): void {
-    this.translateService.use(this.storageService.getCurrentLocale());
+    this.translateService.use(this.localDataSaverService.getCurrentLocale());
   }
 
   changeInterest(interest: Interest) {
-    /*this.class = this.storageService.saveCurrentInterest(interest);*/
-    this.storageService.saveCurrentInterest(interest);
+    this.interestControllerService.changePageInterest(interest);
   }
 
   changeContentVisibility() {

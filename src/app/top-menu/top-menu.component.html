@@ -3,7 +3,8 @@
     <li class="link logo">
       <a routerLink="{{'/' + currentInterest}}"><img [class]="currentInterest" [src]="'assets/img/logo/logo_' + currentInterest + '.png'" alt="logo"></a>
     </li>
-    <li class="link" routerLinkActive="active">
+    <li class="link" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
       <a routerLink="{{'/' + currentInterest}}">{{ 'menu.recommendations' | translate }}</a>
     </li>
     <li class="link" routerLinkActive="active">

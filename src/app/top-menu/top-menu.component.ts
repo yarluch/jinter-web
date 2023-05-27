@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {LocalStorageDataService} from "../services/local-storage-data.service";
+import {InterestControllerService} from "../services/interest-controller.service";
 import {TranslateService} from "@ngx-translate/core";
 import {Interest, Locale} from "../types/types";
+import {LocalDataSaverService} from "../services/local-data-saver.service";
 
 @Component({
   selector: 'top-menu',
@@ -12,8 +13,10 @@ export class TopMenuComponent implements OnInit {
 
   isSearchActive = false
   currentInterest!: Interest;
-  constructor(public storageService: LocalStorageDataService, private translateService: TranslateService) {
-    storageService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
+  constructor(public interestControllerService: InterestControllerService,
+              private localDataSaverService : LocalDataSaverService,
+              private translateService: TranslateService) {
+    interestControllerService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
   }
 
   ngOnInit() {
@@ -21,7 +24,7 @@ export class TopMenuComponent implements OnInit {
 
   changeLocale(locale: Locale) {
     this.translateService.use(locale);
-    this.storageService.saveCurrentLocale(locale);
+    this.localDataSaverService.saveCurrentLocale(locale);
   }
 
   protected readonly console = console;
