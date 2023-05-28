@@ -1,4 +1,3 @@
-<top-menu></top-menu>
-<interest-switch (interest-changer)="changeInterest($event)"
-                 (content-hider)="changeContentVisibility()"></interest-switch>
+<top-menu *ngIf="isInterfaceVisible"></top-menu>
+<interest-switch *ngIf="isInterfaceVisible"></interest-switch>
 <router-outlet></router-outlet>
