@@ -2,11 +2,51 @@
   "menu": {
     "recommendations": "Рекомендації",
     "about": "Про нас",
-    "search": "Пошук..."
+    "search": "Пошук...",
+    "user-menu": {
+      "logout": "Вийти"
+    }
   },
   "main": {
     "popular": "Популярне",
     "lists": "Списки",
     "popular_authors": "Популярні автори"
+  },
+  "login-sign-up": {
+    "login": "Вхід",
+    "sign-up": "Реєстрація",
+    "email": "Пошта",
+    "username": "Ім'я користувача",
+    "password": "Пароль",
+    "password-confirmation": "Підтвердження паролю",
+    "date-of-birth": "Дата народження",
+    "male": "Чоловік",
+    "female": "Жінка",
+    "login-btn": "Увійти",
+    "sign-up-btn": "Зарєструватися",
+    "have-an-account": "Вже є аккаунт?",
+    "no-account": "Немає аккаунту?",
+    "validation-err": {
+      "email-empty": "Електронна пошта має бути заповнена",
+      "email-spaces": "Електронна пошта не може містити пробіли",
+      "email-incorrect": "Електронна пошта неправильна",
+      "email-used": "Електронна пошта вже зайнята",
+
+      "username-empty": "Ім'я користувача має бути заповнене",
+      "username-spaces": "Ім'я користувача не може містити пробіли",
+      "username-taken": "Ім'я користувача вже зайнято",
+      "username-not-exists": "Користувача з цим іменем не існує",
+
+      "password-empty": "Пароль має бути заповнений",
+      "password-spaces": "Пароль не може містити пробіли",
+      "password-min-length": "Мінімальна довжина паролю 8 символів",
+      "password-symbols": "Пароль має містити велику та малу літери, число та спец символ",
+
+      "password-confirmation-empty": "Підтвердження паролю має бути заповнене",
+      "password-confirmation-not-matches": "Підтвердження паролю не співпадає з паролем",
+
+      "date-of-birth-empty": "Дата народження має бути заповнена",
+      "date-of-birth-age": "Користувач має бути старшим 13 років"
+    }
   }
 }

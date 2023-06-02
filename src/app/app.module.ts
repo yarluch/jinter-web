@@ -18,9 +18,10 @@ import { InterestPageComponent } from './pages/interest-page/interest-page.compo
 import { AuthorCardComponent } from './cards/author-card/author-card.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { InterestSwitchComponent } from './interest-switch/interest-switch.component';
-import { LoginSingUpPageComponent } from './pages/login-sign-up-page/login-sing-up-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import {environment} from "../environments/environment.prod";
+import {ReactiveFormsModule} from "@angular/forms";
+import { LoginSignUpModalComponent } from './modals/login-sign-up-modal/login-sign-up-modal.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +36,8 @@ import {environment} from "../environments/environment.prod";
     AuthorCardComponent,
     ProfilePageComponent,
     InterestSwitchComponent,
-    LoginSingUpPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    LoginSignUpModalComponent
   ],
   imports: [
     BrowserModule,
@@ -55,14 +56,6 @@ import {environment} from "../environments/environment.prod";
       {
         path: '',
         component: HomePageComponent
-      },
-      {
-        path: `${environment.LOGIN_PAGE_PATH}`,
-        component: LoginSingUpPageComponent
-      },
-      {
-        path: `${environment.SIGN_UP_PAGE_PATH}`,
-        component: LoginSingUpPageComponent
       },
       {
         path: `${environment.NOT_FOUND_PAGE_PATH}`,
@@ -88,7 +81,8 @@ import {environment} from "../environments/environment.prod";
         path: '**',
         component: NotFoundPageComponent
       }
-    ])
+    ]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

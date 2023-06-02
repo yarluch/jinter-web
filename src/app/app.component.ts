@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   isBlackoutActive = false;
   isDialogBlackoutActive = false;
 
-  isInterfaceVisible!: boolean;
+  /*isInterfaceVisible!: boolean;*/
 
   @HostBinding('class') class!: string;
 
@@ -31,8 +31,8 @@ export class AppComponent implements OnInit {
     interestControllerService.getCurrentInterestObserver()
       .subscribe(interest => this.class = interest);
 
-    visibilityControllerService.getIsInterfaceVisible()
-      .subscribe(isVisible => this.isInterfaceVisible = isVisible);
+    /*visibilityControllerService.getIsInterfaceVisible()
+      .subscribe(isVisible => this.isInterfaceVisible = isVisible);*/
     visibilityControllerService.getIsBlackoutActive()
       .subscribe(isActive => this.isBlackoutActive = isActive);
     visibilityControllerService.getIsDialogBlackoutActive()

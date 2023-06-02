@@ -2,11 +2,51 @@
   "menu": {
     "recommendations": "Recommendations",
     "about": "About Us",
-    "search": "Search..."
+    "search": "Search...",
+    "user-menu": {
+      "logout": "Logout"
+    }
   },
   "main": {
     "popular": "Popular",
     "lists": "Lists",
     "popular_authors": "Popular Authors"
+  },
+  "login-sign-up": {
+    "login": "Login",
+    "sign-up": "Sign Up",
+    "email": "E-mail",
+    "username": "Username",
+    "password": "Password",
+    "password-confirmation": "Password confirmation",
+    "date-of-birth": "Date of birth",
+    "male": "Male",
+    "female": "Female",
+    "login-btn": "Login",
+    "sign-up-btn": "Sign Up",
+    "have-an-account": "Already have an account?",
+    "no-account": "No account?",
+    "validation-err": {
+      "email-empty": "E-mail must be filled",
+      "email-spaces": "E-mail can not contain spaces",
+      "email-incorrect": "E-mail address is incorrect",
+      "email-used": "This e-mail is already used",
+
+      "username-empty": "Username must be filled",
+      "username-spaces": "Username can not contain spaces",
+      "username-taken": "This username is already taken",
+      "username-not-exists": "This username is not exists",
+
+      "password-empty": "Password must be filled",
+      "password-spaces": "Password can not contain spaces",
+      "password-min-length": "Password must be minimum 8 characters",
+      "password-symbols": "Password must contain upper and lower case letters, a number and a special character",
+
+      "password-confirmation-empty": "Password confirmation must be filled",
+      "password-confirmation-not-matches": "Password confirmation does not match password",
+
+      "date-of-birth-empty": "Date of birth must be filled",
+      "date-of-birth-age": "User must be 13 years or older"
+    }
   }
 }

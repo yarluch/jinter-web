@@ -20,6 +20,14 @@
   padding: 0;
 }
 
+.additional-actions > * {
+  margin: 0 5px;
+}
+
+.additional-actions > *:last-of-type {
+  margin: 0 0 0 5px;
+}
+
 .link {
   cursor: pointer;
   margin-right: 20px;
@@ -29,49 +37,58 @@
   margin-right: 40px;
 }
 
-.link > a, .language-button {
+.link > a, .menu-button {
   text-decoration: none;
   font-size: 22px;
   font-family: var(--headings-font);
   font-weight: var(--headings-font-weight);
-  color: var(--font-color);
+  color: var(--menu-font-color);
 }
 
-.link > a:hover, .language-button:hover {
+.link > a, .menu-button {
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-medium-1);
+}
+
+.link > a:hover, .menu-button:hover {
   opacity: .8;
 }
 
-.link.active > a {
+.link.active > a, .menu-button.active {
   color: var(--link-active-color);
 }
 
-.language-button {
+.menu-button {
   outline: none;
   border: 0;
   background: none;
   cursor: pointer;
 }
 
-.language-button {
-  font-family: var(--headings-font);
-  color: var(--font-color);
+.menu-button.primary {
+  border-radius: 20px;
+  margin: 0 6px;
+  padding: 1px 15px;
+  background: var(--button-primary-gradient-bg);
+  background-size: var(--button-gradient-background-size);
 }
 
-.language-buttons-group {
+.menu-button.primary:hover {
+  opacity: 1;
+  background-position: var(--button-gradient-background-position-hover);
+}
+
+.buttons-group {
   position: relative;
+  display: flex;
+  align-content: center;
+
 }
 
 .menu-divider {
-  border-left: 2px solid var(--font-color);
-}
-
-.menu-divider {
-  height: 120%;
-  position: absolute;
-  left: 50%;
-  margin-left: -1px;
-  top: -10%;
-  border-radius: 2px;
+  padding: 20px 1px;
+  background: var(--menu-font-color);
 }
 
 .search-group {
@@ -99,7 +116,7 @@
   font-family: var(--headings-font);
   font-size: 22px;
   font-weight: 400;
-  color: var(--font-color);
+  color: var(--menu-font-color);
 }
 
 .searchbar {
@@ -114,7 +131,7 @@
 }
 
 .searchbar::placeholder {
-  color: var(--font-color);
+  color: var(--menu-font-color);
 }
 
 .search-group.active > .searchbar {

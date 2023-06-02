@@ -1,0 +1,161 @@
+<div class="content-wrapper">
+  <button class="close-button" (click)="closeForm()"></button>
+  <div class="form-header">
+    <img class="logo" ngSrc="/assets/img/logo/logo_base.png" alt="logo" height="132" width="312">
+
+    <div class="heading-wrapper">
+      <h2 [class.active]="state === environment.LOGIN">{{"login-sign-up.login" | translate}}</h2>
+      <h2 [class.active]="state === environment.SIGN_UP">{{"login-sign-up.sign-up" | translate}}</h2>
+    </div>
+  </div>
+
+  <form [formGroup]="form">
+    <div class="input-group" [class.invalid]="isUsernameInvalid()">
+      <label for="username">{{"login-sign-up.username" | translate}}</label>
+      <input formControlName="username" type="text" id="username">
+      <div class="validation-messages">
+        <div *ngIf="isUsernameInvalid()" class="message" [class.active]="form.get('username')?.errors?.['required']">
+          {{"login-sign-up.validation-err.username-empty" | translate}}
+        </div>
+        <div *ngIf="state === environment.LOGIN && isUsernameInvalid()" class="message" [class.active]="form.get('username')?.errors?.['username-not-exists']">
+          {{"login-sign-up.validation-err.username-not-exists" | translate}}
+        </div>
+        <div *ngIf="state === environment.SIGN_UP && isUsernameInvalid()" class="message" [class.active]="form.get('username')?.errors?.['can-not-contain-space']">
+          {{"login-sign-up.validation-err.username-spaces" | translate}}
+        </div>
+        <div *ngIf="state === environment.SIGN_UP && isUsernameInvalid()" class="message"
+             [class.active]="form.get('username')?.errors?.['username-taken']">
+          {{"login-sign-up.validation-err.username-taken" | translate}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="input-group" [class.invalid]="isPasswordInvalid()">
+      <label for="password">{{"login-sign-up.password" | translate}}</label>
+      <div class="password-group">
+        <input formControlName="password" type="password" id="password"
+               [type]="isPasswordVisible ? 'text' : 'password'">
+        <button type="button" class="show-hide"
+                [class.hide]="isPasswordVisible"
+                (click)="changePasswordVisibility()"></button>
+      </div>
+      <div class="validation-messages">
+        <div *ngIf="isPasswordInvalid()" class="message"
+             [class.active]="form.get('password')?.errors?.['required']">
+          {{"login-sign-up.validation-err.password-empty" | translate}}
+        </div>
+        <div *ngIf="state === environment.SIGN_UP && isPasswordInvalid()" class="message"
+             [class.active]="form.get('password')?.errors?.['can-not-contain-space']
+             && !form.get('password')?.errors?.['minlength']">
+          {{"login-sign-up.validation-err.password-spaces" | translate}}
+        </div>
+        <div *ngIf="state === environment.SIGN_UP && isPasswordInvalid()" class="message"
+             [class.active]="form.get('password')?.errors?.['minlength']">
+          {{"login-sign-up.validation-err.password-min-length" | translate}}
+        </div>
+        <div *ngIf="state === environment.SIGN_UP && isPasswordInvalid()" class="message"
+             [class.active]="form.get('password')?.errors?.['not-all-required-symbols']
+             && !form.get('password')?.errors?.['can-not-contain-space']">
+          {{"login-sign-up.validation-err.password-symbols" | translate}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="sign-up-fields" [class.active]="state !== environment.LOGIN"
+         *ngIf="state !== ''">
+      <div class="input-group" [class.invalid]="isPasswordConfInvalid()">
+        <label for="password-confirmation">{{"login-sign-up.password-confirmation" | translate}}</label>
+        <div class="password-group">
+          <input formControlName="password-confirmation" type="password" id="password-confirmation"
+                 [type]="isPasswordConfVisible ? 'text' : 'password'">
+          <button type="button" class="show-hide"
+                  [class.hide]="isPasswordConfVisible"
+                  (click)="changePasswordConfVisibility()"></button>
+        </div>
+        <div class="validation-messages">
+          <div *ngIf="isPasswordConfInvalid()" class="message"
+               [class.active]="form.get('password-confirmation')?.errors?.['required']">
+            {{"login-sign-up.validation-err.password-confirmation-empty" | translate}}
+          </div>
+          <div *ngIf="isPasswordConfInvalid()" class="message"
+               [class.active]="form.get('password-confirmation')?.errors?.['passwords-not-matches']
+             && !form.get('password-confirmation')?.errors?.['required']">
+            {{"login-sign-up.validation-err.password-confirmation-not-matches" | translate}}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="input-group" [class.invalid]="isEmailInvalid()">
+        <label for="email">{{"login-sign-up.email" | translate}}</label>
+        <input formControlName="email" type="email" id="email">
+        <div class="validation-messages">
+          <div *ngIf="isEmailInvalid()" class="message" [class.active]="form.get('email')?.errors?.['required']">
+            {{"login-sign-up.validation-err.email-empty" | translate}}
+          </div>
+          <div *ngIf="isEmailInvalid()" class="message" [class.active]="form.get('email')?.errors?.['email']">
+            {{"login-sign-up.validation-err.email-incorrect" | translate}}
+          </div>
+          <div *ngIf="state === environment.SIGN_UP && isEmailInvalid()" class="message"
+               [class.active]="form.get('email')?.errors?.['email-used']">
+            {{"login-sign-up.validation-err.email-used" | translate}}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="input-group" [class.invalid]="isDateOfBirthInvalid()">
+        <label for="date-of-birth">{{"login-sign-up.date-of-birth" | translate}}</label>
+        <input formControlName="date-of-birth" type="date" id="date-of-birth">
+        <div class="validation-messages">
+          <div *ngIf="isDateOfBirthInvalid()" class="message"
+               [class.active]="form.get('date-of-birth')?.errors?.['required']">
+            {{"login-sign-up.validation-err.date-of-birth-empty" | translate}}
+          </div>
+          <div *ngIf="isDateOfBirthInvalid()" class="message"
+               [class.active]="form.get('date-of-birth')?.errors?.['younger-13']">
+            {{"login-sign-up.validation-err.date-of-birth-age" | translate}}
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group radio">
+        <div class="radio-group">
+          <input formControlName="sex" type="radio" id="sexMale" name="sex" value="0">
+          <label for="sexMale">{{"login-sign-up.male" | translate}}</label>
+        </div>
+        <div class="radio-group">
+          <input formControlName="sex" type="radio" id="sexFemale" name="sex" value="1">
+          <label for="sexFemale">{{"login-sign-up.female" | translate}}</label>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="form-footer">
+    <div class="form-buttons-group" [class.hidden]="state !== environment.LOGIN">
+      <button class="button" (click)="login()"
+              [disabled]="form.get('username')?.invalid || form.get('password')?.invalid">
+        {{"login-sign-up.login-btn" | translate}}
+      </button>
+
+      <div class="redirection-group">
+        {{"login-sign-up.no-account" | translate}}
+        <span (click)="changeFormState(environment.SIGN_UP)">{{"login-sign-up.sign-up-btn" | translate}}</span>
+      </div>
+    </div>
+
+    <div class="form-buttons-group" [class.hidden]="state !== environment.SIGN_UP">
+      <button class="button" (click)="signUp()" [disabled]="form.invalid">{{"login-sign-up.sign-up-btn" | translate}}</button>
+
+      <div class="redirection-group">
+        {{"login-sign-up.have-an-account" | translate}}
+        <span (click)="changeFormState(environment.LOGIN)">{{"login-sign-up.login-btn" | translate}}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

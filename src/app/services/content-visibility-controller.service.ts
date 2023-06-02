@@ -7,18 +7,19 @@ import {BehaviorSubject, Observable} from "rxjs";
 export class ContentVisibilityControllerService {
 
 
-  private isInterfaceVisible = new BehaviorSubject<boolean>(true);
+  /*private isInterfaceVisible = new BehaviorSubject<boolean>(true);*/
   private isBlackoutActive = new BehaviorSubject<boolean>(false);
   private isDialogBlackoutActive = new BehaviorSubject<boolean>(false);
+  private loginSingUpState = new BehaviorSubject<string>('');
 
   constructor() { }
 
-  getIsInterfaceVisible(): Observable<boolean> {
+  /*getIsInterfaceVisible(): Observable<boolean> {
     return this.isInterfaceVisible.asObservable();
   }
   setIsInterfaceVisible(value: boolean) {
     this.isInterfaceVisible.next(value);
-  }
+  }*/
 
   getIsBlackoutActive(): Observable<boolean> {
     return this.isBlackoutActive.asObservable();
@@ -32,5 +33,12 @@ export class ContentVisibilityControllerService {
   }
   setIsDialogBlackoutActive(value: boolean) {
     this.isDialogBlackoutActive.next(value);
+  }
+
+  getLoginSingUpState(): Observable<string> {
+    return this.loginSingUpState.asObservable();
+  }
+  setLoginSingUpState(value: string) {
+    this.loginSingUpState.next(value);
   }
 }

@@ -1,5 +1,8 @@
 :host {
   --button-gradient-background-size: 200% auto;
+  --button-gradient-background-position-hover: right center;
+
+  --border-radius-big: 20px;
 
   display: block;
   box-sizing: border-box;
@@ -14,6 +17,7 @@
 
 
   --font-color: #FFF;
+  --menu-font-color: #FFF;
   --link-active-color: #DA67DC;
 
   --searchbar-bg-color: #4B236A;
@@ -124,15 +128,15 @@
   border: none;
   font-size: 20px;
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 60px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   transition-property: all;
   transition-timing-function: var(--transition-function-standard);
   transition-duration: var(--transition-medium-1);
 }
 
-:host ::ng-deep .button-primary:hover {
-  background-position: right center;
+:host ::ng-deep .button:hover {
+  background-position: var(--button-gradient-background-position-hover);
   box-shadow: none;
 }
 
