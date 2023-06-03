@@ -41,3 +41,8 @@
 :host ::ng-deep .slick-slide {
   margin: 0 7px;
 }
+
+
+:host(.blocked-links) ::ng-deep a {
+  pointer-events: none;
+}

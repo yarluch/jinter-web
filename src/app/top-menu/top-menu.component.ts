@@ -22,13 +22,13 @@ export class TopMenuComponent implements OnInit {
 
   currentInterest!: Interest;
   constructor(public interestControllerService: InterestControllerService,
-              private localDataSaverService : LocaleControllerService,
+              private localeControllerService : LocaleControllerService,
               private translateService: TranslateService,
               private visibilityControllerService: ContentVisibilityControllerService,
               private userDataService: CurrentUserDataService) {
     interestControllerService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
 
-    localDataSaverService.getCurrentObservable().subscribe(locale => {
+    localeControllerService.getCurrentObservable().subscribe(locale => {
       this.currentLocale = locale;
     });
 
@@ -44,7 +44,7 @@ export class TopMenuComponent implements OnInit {
   }
 
   changeLocale(locale: Locale) {
-    this.localDataSaverService.changeCurrentLocale(locale);
+    this.localeControllerService.changeCurrentLocale(locale);
   }
 
   protected readonly console = console;

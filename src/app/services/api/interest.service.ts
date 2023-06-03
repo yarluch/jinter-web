@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment.prod";
-import {InterestCardData} from "../../interfaces/InterestCardData";
+import {InterestCardData} from "../../interfaces/interestCardData";
 import {InterestControllerService} from "../interest-controller.service";
-import {ListCardData} from "../../interfaces/ListCardData";
+import {ListCardData} from "../../interfaces/listCardData";
 
 @Injectable({
   providedIn: 'root'

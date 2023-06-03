@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
   isBlackoutActive = false;
   isDialogBlackoutActive = false;
 
-
   @HostBinding('class') class!: string;
 
 

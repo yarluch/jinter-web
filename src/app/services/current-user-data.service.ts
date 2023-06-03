@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {LoginModel} from "../interfaces/user/LoginModel";
+import {LoginModel} from "../interfaces/user/loginModel";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({

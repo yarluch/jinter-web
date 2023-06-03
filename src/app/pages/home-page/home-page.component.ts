@@ -3,8 +3,9 @@ import {SliderItemSize} from "../../enums/SliderItemSize";
 import {ActivatedRoute, Router} from "@angular/router";
 import {InterestControllerService} from "../../services/interest-controller.service";
 import {Location} from "@angular/common";
-import {InterestCardData} from "../../interfaces/InterestCardData";
+import {InterestCardData} from "../../interfaces/interestCardData";
 import {InterestService} from "../../services/api/interest.service";
+import {ListCardData} from "../../interfaces/listCardData";
 
 @Component({
   selector: 'home-page',
@@ -13,6 +14,7 @@ import {InterestService} from "../../services/api/interest.service";
 })
 export class HomePageComponent implements OnInit {
   popularInterests: Array<InterestCardData> = [];
+  systemLists: Array<ListCardData> = [];
 
   protected readonly SliderSizeSmall = SliderItemSize.SMALL;
   protected readonly SliderSizeMedium = SliderItemSize.MEDIUM;
@@ -29,6 +31,15 @@ export class HomePageComponent implements OnInit {
     this.interestService.getPopular().subscribe(
       data => {
         this.popularInterests = data
+      },
+      error => {
+        alert('Error occurred');
+      }
+    );
+
+    this.interestService.getSystemRecommendations().subscribe(
+      data => {
+        this.systemLists = data
       },
       error => {
         alert('Error occurred');

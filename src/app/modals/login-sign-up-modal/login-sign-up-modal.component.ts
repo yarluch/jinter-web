@@ -9,7 +9,7 @@ import {EmailValidators} from "../../validators/email.validators";
 import {AgeValidators} from "../../validators/age.validators";
 import {AuthenticationService} from "../../services/api/authentication.service";
 import {CurrentUserDataService} from "../../services/current-user-data.service";
-import {LoginModel} from "../../interfaces/user/LoginModel";
+import {LoginModel} from "../../interfaces/user/loginModel";
 import {RegisterDTO} from "../../interfaces/user/registerDTO";
 
 @Component({
