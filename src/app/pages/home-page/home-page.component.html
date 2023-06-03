@@ -1,21 +1,10 @@
-<section class="section-wrapper">
+<section class="section-wrapper" *ngIf="popularInterests.length > 0">
   <h2>{{ 'main.popular' | translate }}</h2>
   <slider [item-size]="SliderSizeSmall">
-    <interest-card [interest-data]="popularInterests[1]"></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
-    <interest-card></interest-card>
+    <ng-container *ngFor="let interest of popularInterests"
+                  style="height: 100%">
+      <interest-card [interest-data]="interest"></interest-card>
+    </ng-container>
   </slider>
 </section>
 

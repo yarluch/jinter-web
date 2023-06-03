@@ -3,5 +3,5 @@
     <h3 class="interest-title">{{data['name']}}</h3>
     <p>{{data['description']}}</p>
   </div>
-  <img class="card-image" ngSrc="{{data['mainPhotoUrl']}}" fill alt="{{data['name']}}">
+  <img class="card-image" ngSrc="{{data['mainPhotoUrl'] ?? alternativePhoto}}" fill alt="{{data['name']}}">
 </a>

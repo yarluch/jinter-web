@@ -54,14 +54,10 @@
 }
 
 .interest-details > p {
+  margin-top: 10px;
   max-height: 30%;
-  margin-top: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.interest-details:hover > p {
-  margin-top: 10px;
 }
 
 .interest-details > h3 {

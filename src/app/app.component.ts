@@ -1,7 +1,7 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {InterestControllerService} from "./services/interest-controller.service";
-import {LocalDataSaverService} from "./services/local-data-saver.service";
+import {LocaleControllerService} from "./services/locale-controller.service";
 import {ContentVisibilityControllerService} from "./services/content-visibility-controller.service";
 
 @Component({
@@ -19,20 +19,17 @@ export class AppComponent implements OnInit {
   isBlackoutActive = false;
   isDialogBlackoutActive = false;
 
-  /*isInterfaceVisible!: boolean;*/
 
   @HostBinding('class') class!: string;
 
 
   constructor(private translateService: TranslateService,
-              private localDataSaverService : LocalDataSaverService,
+              private localeControllerService : LocaleControllerService,
               private interestControllerService: InterestControllerService,
               private visibilityControllerService: ContentVisibilityControllerService) {
     interestControllerService.getCurrentInterestObserver()
       .subscribe(interest => this.class = interest);
 
-    /*visibilityControllerService.getIsInterfaceVisible()
-      .subscribe(isVisible => this.isInterfaceVisible = isVisible);*/
     visibilityControllerService.getIsBlackoutActive()
       .subscribe(isActive => this.isBlackoutActive = isActive);
     visibilityControllerService.getIsDialogBlackoutActive()
@@ -40,6 +37,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translateService.use(this.localDataSaverService.getCurrentLocale());
   }
 }

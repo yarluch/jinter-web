@@ -14,6 +14,7 @@ export class ListCardComponent implements OnInit {
     creator: "",
     id: 'dsfdf-sdfsdf-sdf',
     name: 'Games List',
+    nameUa: "",
     coverColor: "#E2842C",
     photoUrl: "https://wallpapercave.com/uwp/uwp935605.png",
     type: RecommendationListType.System,

@@ -1,6 +1,6 @@
-<a class="card-wrapper" [style]="{'background': data['coverColor']}">
+<a class="card-wrapper" [style]="{'background': data['coverColor'] ?? '#E2842C'}">
   <div class="card-content-wrapper"
-       [class]="data['photoUrl'] != '' ? 'content-shadows' : ''">
+       [class]="data['photoUrl'] ? 'content-shadows' : ''">
     <h3 class="list-title">{{data['name']}}</h3>
     <img *ngIf="data['type'] == RecommendationListType.UserDefined"
          class="creator-photo"

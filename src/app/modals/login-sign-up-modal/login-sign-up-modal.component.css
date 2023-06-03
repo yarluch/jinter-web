@@ -1,4 +1,5 @@
 :host {
+  visibility: hidden;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -25,6 +26,7 @@ h2, form-buttons-group, .sign-up-fields {
 }
 
 :host(.top) {
+  visibility: visible;
   z-index: 150;
 }
 

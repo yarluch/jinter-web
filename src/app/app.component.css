@@ -42,6 +42,7 @@
 }
 
 :host::before {
+  visibility: hidden;
   content: ' ';
   background: var(--blackout-color);
   backdrop-filter: blur(2px);
@@ -58,10 +59,12 @@
 
 :host(.hidden-content)::before {
   z-index: 101;
+  visibility: visible;
 }
 
 :host(.hidden-interface)::before {
   z-index: 110;
+  visibility: visible;
 }
 
 :host(.hidden-content)::before,

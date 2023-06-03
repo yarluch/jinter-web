@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {InterestControllerService} from "../services/interest-controller.service";
 import {TranslateService} from "@ngx-translate/core";
 import {Interest, Locale} from "../types/types";
-import {LocalDataSaverService} from "../services/local-data-saver.service";
+import {LocaleControllerService} from "../services/locale-controller.service";
 import {ContentVisibilityControllerService} from "../services/content-visibility-controller.service";
 import {environment} from "../../environments/environment.prod";
 import {CurrentUserDataService} from "../services/current-user-data.service";
@@ -22,13 +22,15 @@ export class TopMenuComponent implements OnInit {
 
   currentInterest!: Interest;
   constructor(public interestControllerService: InterestControllerService,
-              private localDataSaverService : LocalDataSaverService,
+              private localDataSaverService : LocaleControllerService,
               private translateService: TranslateService,
               private visibilityControllerService: ContentVisibilityControllerService,
               private userDataService: CurrentUserDataService) {
     interestControllerService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
 
-    this.currentLocale = localDataSaverService.getCurrentLocale()
+    localDataSaverService.getCurrentObservable().subscribe(locale => {
+      this.currentLocale = locale;
+    });
 
     userDataService.getUserObservable().subscribe(data => {
       this.isUserLoggedIn = data != null
@@ -42,9 +44,7 @@ export class TopMenuComponent implements OnInit {
   }
 
   changeLocale(locale: Locale) {
-    this.translateService.use(locale);
-    this.localDataSaverService.saveCurrentLocale(locale);
-    this.currentLocale = locale;
+    this.localDataSaverService.changeCurrentLocale(locale);
   }
 
   protected readonly console = console;

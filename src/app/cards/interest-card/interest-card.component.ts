@@ -8,6 +8,8 @@ import {InterestCardData} from "../../interfaces/InterestCardData";
 })
 export class InterestCardComponent implements OnInit {
 
+  alternativePhoto: string = 'https://assets-prd.ignimgs.com/2020/09/29/genshin-impact-button-fin-1601346152039.jpg'
+
   @Input('interest-data')
   data: InterestCardData = {
     id: '',
