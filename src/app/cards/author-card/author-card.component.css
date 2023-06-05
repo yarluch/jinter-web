@@ -32,7 +32,7 @@
 }
 
 a {
-  color: var(--font-color);
+  color: var(--card-font-color);
   margin-top: 10px;
   transition-property: opacity;
   transition-timing-function: var(--transition-function-standard);
@@ -41,6 +41,10 @@ a {
 
 a:hover {
   opacity: 0.7;
+}
+
+h3, p {
+  color: var(--card-font-color);
 }
 
 h3 {

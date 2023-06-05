@@ -4,13 +4,15 @@
 
   --border-radius-big: 20px;
 
+  margin-top: 71px;
+  padding-top: 30px;
   display: block;
   box-sizing: border-box;
   height: calc(100vh - 71px);
   overflow: auto;
 }
 
-:host.games, :host.books, :host.movies {
+:host.games {
   --bg-color: #1D2341;
   --bg-accent-color: #051439;
   --blackout-color: #1D234199;
@@ -18,6 +20,9 @@
 
   --font-color: #FFF;
   --menu-font-color: #FFF;
+  --card-font-color: #FFF;
+  --button-font-color: #FFF;
+
   --link-active-color: #DA67DC;
 
   --searchbar-bg-color: #4B236A;
@@ -38,8 +43,83 @@
   --scrollbar-bg-color: #fff;
   --scrollbar-bg-color-hover: rgba(255, 255, 255, 0.7);
 
-  margin-top: 71px;
-  padding-top: 30px;
+  --slider-arrow-left: url('/assets/img/arrows/games-arrow-left.png');
+  --slider-arrow-right: url('/assets/img/arrows/games-arrow-right.png');
+
+  background: var(--bg-color);
+}
+
+:host.books {
+  --bg-color: #FFEDCE;
+  --bg-accent-color: #280A0A;
+  --blackout-color: #FFEDCE99;
+
+
+  --font-color: #280A0A;
+  --menu-font-color: #FFF;
+  --card-font-color: #FFF;
+  --button-font-color: #FFF;
+
+  --link-active-color: #E2842C;
+
+  --searchbar-bg-color: #193439;
+  --searchbar-bg-color-hover: #0d2d34;
+
+  --card-color-1: #E2842C;
+  --card-color-2: #72389F;
+  --card-color-3: #CF2D2D;
+  --card-color-4: #DA67DC;
+
+  --author-card-bg-color-1: #787D46;
+  --author-card-bg-color-2: #787D46;
+
+  --button-primary-gradient-bg: linear-gradient(to right, #AD4A2B 0%, #E2842C 51%, #AD4A2B 100%);
+  --button-simple-bg: #AD4A2B;
+  --button-simple-bg-hover: #bb502e;
+
+  --scrollbar-bg-color: #280A0A;
+  --scrollbar-bg-color-hover: rgba(40, 10, 10, 0.7);
+
+  --slider-arrow-left: url('/assets/img/arrows/books-arrow-left.png');
+  --slider-arrow-right: url('/assets/img/arrows/books-arrow-right.png');
+
+  background: var(--bg-color);
+}
+
+:host.movies {
+  --bg-color: #1B1B1B;
+  --bg-accent-color: #323232;
+  --blackout-color: #1B1B1B99;
+
+
+  --font-color: #FFF;
+  --menu-font-color: #FFF;
+  --card-font-color: #FFF;
+  --button-font-color: #FFF;
+
+  --link-active-color: #308777;
+
+  --searchbar-bg-color: #3D7369;
+  --searchbar-bg-color-hover: #285b51;
+
+  --card-color-1: #E2842C;
+  --card-color-2: #72389F;
+  --card-color-3: #CF2D2D;
+  --card-color-4: #DA67DC;
+
+  --author-card-bg-color-1: #202570;
+  --author-card-bg-color-2: #1B1B1B;
+
+  --button-primary-gradient-bg: linear-gradient(to right, #912AC2 0%, #31A8FF 51%, #912AC2 100%);
+  --button-simple-bg: #31A8FF;
+  --button-simple-bg-hover: #2885c9;
+
+  --scrollbar-bg-color: #fff;
+  --scrollbar-bg-color-hover: rgba(255, 255, 255, 0.7);
+
+  --slider-arrow-left: url('/assets/img/arrows/movies-arrow-left.png');
+  --slider-arrow-right: url('/assets/img/arrows/movies-arrow-right.png');
+
   background: var(--bg-color);
 }
 
@@ -130,7 +210,7 @@
 }
 
 :host ::ng-deep .button {
-  color: var(--font-color);
+  color: var(--button-font-color);
   font-family: var(--content-font);
   font-weight: 500;
   cursor: pointer;

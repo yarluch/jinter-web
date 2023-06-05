@@ -93,6 +93,9 @@
 
 .search-group {
   background: var(--searchbar-bg-color);
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-medium-1);
 }
 
 .search-group:hover {

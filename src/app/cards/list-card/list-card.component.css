@@ -50,6 +50,7 @@
 
 .list-title {
   font-size: 28px;
+  color: var(--card-font-color);
 }
 
 .creator-photo {
