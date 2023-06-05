@@ -1,7 +1,7 @@
 <a class="card-wrapper" [routerLink]="['interest', data['id']]">
   <div class="interest-details">
-    <h3 class="interest-title">{{data['name']}}</h3>
-    <p>{{data['description']}}</p>
+    <h3 class="interest-title">{{gameTitle}}</h3>
+    <p>{{gameDescription}}</p>
   </div>
   <img class="card-image" ngSrc="{{data['mainPhotoUrl'] ?? alternativePhoto}}" fill alt="{{data['name']}}">
 </a>

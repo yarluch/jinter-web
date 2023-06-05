@@ -21,6 +21,15 @@ export class SliderComponent implements AfterViewInit {
   @Input('item-size')
   itemSize = SliderItemSize.SMALL;
 
+  @Input('arrows')
+  arrows = false;
+
+  @Input('autoplay')
+  autoplay = false;
+
+  @Input('infinite')
+  isInfinite = false;
+
   @HostBinding('class') class: string = '';
 
   isMouseDown = false;
@@ -31,21 +40,14 @@ export class SliderComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     $('#slider-' + this.sliderIndex).slick({
-      infinite: false,
+      infinite: this.isInfinite,
       slidesToShow: this.getItemsAmountToShow(),
-      slidesToScroll: this.getItemsAmountToShow()
+      slidesToScroll: this.getItemsAmountToShow(),
+      arrows: this.arrows,
+      autoplay: this.autoplay,
+      autoplaySpeed: 3000,
+      pauseOnHover: true,
     });
-
-    /*$('.slick-slide').on('mousedown', function (evt) {
-      $('.slick-slide').on('mouseup mousemove', function handler(evt) {
-        if (evt.type === 'mouseup') {
-          $product_id = $(this).data('product-id');
-          $('#product_select_form').submit();
-          $('#product_id').val($product_id);
-        }
-        $('.slick-slide').off('mouseup mousemove', handler);
-      });
-    });*/
   }
 
   private getItemsAmountToShow(): number {
@@ -54,6 +56,8 @@ export class SliderComponent implements AfterViewInit {
         return 6
       case SliderItemSize.MEDIUM:
         return 5
+      case SliderItemSize.MEDIUM_2:
+        return 4
       case SliderItemSize.BIG:
         return 3
       case SliderItemSize.VERY_BIG:
@@ -68,7 +72,6 @@ export class SliderComponent implements AfterViewInit {
   }
 
   @HostListener('mousemove', ['$event']) onMove(event: PointerEvent): void {
-    console.error('sdfdsfsdfd')
     this.class = this.isMouseDown ? 'blocked-links' : '';
   }
 

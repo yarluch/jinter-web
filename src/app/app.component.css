@@ -10,7 +10,7 @@
   overflow: auto;
 }
 
-:host.games, :host.books {
+:host.games, :host.books, :host.movies {
   --bg-color: #1D2341;
   --bg-accent-color: #051439;
   --blackout-color: #1D234199;
@@ -32,6 +32,8 @@
   --author-card-bg-color-2: #4B236A;
 
   --button-primary-gradient-bg: linear-gradient(to right, #DA67DC 0%, #E2842C 51%, #DA67DC 100%);
+  --button-simple-bg: #E2842C;
+  --button-simple-bg-hover: #c27227;
 
   --scrollbar-bg-color: #fff;
   --scrollbar-bg-color-hover: rgba(255, 255, 255, 0.7);
@@ -102,6 +104,10 @@
   margin-top: 0;
 }
 
+:host ::ng-deep h1 {
+  font-size: 50px;
+}
+
 :host ::ng-deep h2 {
   font-size: 32px;
 }
@@ -117,7 +123,8 @@
   font-size: 18px;
 }
 
-:host ::ng-deep .username {
+:host ::ng-deep .username,
+:host ::ng-deep .game-title{
   font-family: var(--accent-font);
   font-weight: var(--accent-font-weight);
 }
@@ -136,6 +143,15 @@
   transition-property: all;
   transition-timing-function: var(--transition-function-standard);
   transition-duration: var(--transition-medium-1);
+}
+
+:host ::ng-deep .button-simple {
+  background: var(--button-simple-bg);
+}
+
+:host ::ng-deep .button-simple:hover {
+  background: var(--button-simple-bg-hover);
+  box-shadow: none;
 }
 
 :host ::ng-deep .button:hover {

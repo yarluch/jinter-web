@@ -1,6 +1,6 @@
 <section class="section-wrapper" *ngIf="popularInterests.length > 0">
   <h2>{{ 'main.popular' | translate }}</h2>
-  <slider [item-size]="SliderSizeSmall">
+  <slider [item-size]="SliderSizeSmall" [arrows]="true">
     <ng-container *ngFor="let interest of popularInterests">
       <interest-card [interest-data]="interest"></interest-card>
     </ng-container>
@@ -9,7 +9,7 @@
 
 <section class="section-wrapper" *ngIf="systemLists.length > 0">
   <h2>{{ 'main.lists' | translate }}</h2>
-  <slider [item-size]="SliderSizeBig">
+  <slider [item-size]="SliderSizeBig" [arrows]="true">
     <ng-container *ngFor="let list of systemLists">
       <list-card [list-data]="list"></list-card>
     </ng-container>
@@ -18,7 +18,7 @@
 
 <section class="section-wrapper">
   <h2>{{ 'main.popular_authors' | translate }}</h2>
-  <slider [item-size]="SliderSizeMedium">
+  <slider [item-size]="SliderSizeMedium" [arrows]="true">
     <author-card></author-card>
     <author-card></author-card>
     <author-card></author-card>

@@ -55,7 +55,8 @@ export class InterestControllerService {
     }
 
     let noInterestPath = url.replace(/^(\/games|\/books|\/movies)/, '');
-    let newUrl = `/${interest}${noInterestPath}`
+    let newUrl = `/${interest}${noInterestPath}`;
+
     this.router.navigate([newUrl]);
   }
 

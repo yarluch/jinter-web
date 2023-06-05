@@ -1,0 +1,35 @@
+.card-wrapper {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.card-wrapper > img {
+  object-fit: cover;
+  position: relative;
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-medium-1);
+}
+
+.card-wrapper:hover > img {
+  transform: scale(105%);
+}
+
+.card-wrapper.video::after {
+  content: ' ';
+  position: absolute;
+  cursor: pointer;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  background: url("/assets/img/gallery-card/play.png") no-repeat;
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+}

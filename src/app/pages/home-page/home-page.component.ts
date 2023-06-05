@@ -3,7 +3,7 @@ import {SliderItemSize} from "../../enums/SliderItemSize";
 import {ActivatedRoute, Router} from "@angular/router";
 import {InterestControllerService} from "../../services/interest-controller.service";
 import {Location} from "@angular/common";
-import {InterestCardData} from "../../interfaces/interestCardData";
+import {InterestCardData} from "../../interfaces/interest/interestCardData";
 import {InterestService} from "../../services/api/interest.service";
 import {ListCardData} from "../../interfaces/listCardData";
 

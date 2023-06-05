@@ -10,7 +10,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MissingTranslationService} from "./services/missing-translation.service";
 import {InterestCardComponent} from './cards/interest-card/interest-card.component';
 import {SliderComponent} from './slider/slider.component';
-import {RouterModule} from "@angular/router";
+import {RouteReuseStrategy, RouterModule} from "@angular/router";
 import {HomePageComponent} from './pages/home-page/home-page.component';
 import {AboutPageComponent} from './pages/about-page/about-page.component';
 import { ListCardComponent } from './cards/list-card/list-card.component';
@@ -22,6 +22,9 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import {environment} from "../environments/environment.prod";
 import {ReactiveFormsModule} from "@angular/forms";
 import { LoginSignUpModalComponent } from './modals/login-sign-up-modal/login-sign-up-modal.component';
+import {CustomRouteReuseStrategy} from "./custom-route-reuse-strategy";
+import { TagChipComponent } from './chips/tag-chip/tag-chip.component';
+import { GalleryCardComponent } from './cards/gallery-card/gallery-card.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { LoginSignUpModalComponent } from './modals/login-sign-up-modal/login-si
     ProfilePageComponent,
     InterestSwitchComponent,
     NotFoundPageComponent,
-    LoginSignUpModalComponent
+    LoginSignUpModalComponent,
+    TagChipComponent,
+    GalleryCardComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,7 @@ import { LoginSignUpModalComponent } from './modals/login-sign-up-modal/login-si
     ]),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

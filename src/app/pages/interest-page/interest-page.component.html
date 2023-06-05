@@ -1,1 +1,40 @@
-<p>interest-page works!</p>
+<div class="photo-wrapper">
+  <img src="{{interestData.mainPhotoUrl ??
+  'https://assets-prd.ignimgs.com/2020/09/29/genshin-impact-button-fin-1601346152039.jpg'}}" alt="main photo">
+
+  <div class="list-menu-group">
+    <button class="button button-simple">dfsdfsdfds</button>
+  </div>
+
+</div>
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="header-group">
+      <h1 class="game-title">{{interestData.name}}</h1>
+      <div class="release-date">{{interestData.releaseDate | date:'dd/MM/yyyy'}}</div>
+    </div>
+    <div class="header-group alignment-right">
+      <div class="score">
+        <img src="/assets/img/interest/trophy_{{interest}}.png" alt="">
+        {{interestData.averageCustomerReviewRate?.toFixed(1) ?? '-'}}
+      </div>
+      <div class="age-restriction">{{interestData.ageRestriction}}</div>
+    </div>
+  </div>
+
+  <div class="chip-container">
+    <ng-container *ngFor="let tag of interestData.tags">
+      <tag-chip [tag]="tag"></tag-chip>
+    </ng-container>
+  </div>
+
+  <slider class="gallery"
+          [item-size]="MEDIUM_2" [autoplay]="true" [infinite]="true">
+    <gallery-card *ngIf="interestData.trailerUrl"
+                  [url]="interestData.trailerUrl" [is-video]="true"></gallery-card>
+
+    <ng-container *ngFor="let photo of interestData.photos">
+      <gallery-card [url]="photo.url"></gallery-card>
+    </ng-container>
+  </slider>
+</div>

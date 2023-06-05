@@ -1,0 +1,19 @@
+.chip {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 60px;
+  margin: 5px;
+  background: var(--bg-accent-color);
+  color: var(--font-color);
+
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-short);
+}
+
+.chip:hover {
+  opacity: 0.7;
+}
