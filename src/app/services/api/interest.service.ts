@@ -95,7 +95,8 @@ export class InterestService {
       tags: tags,
       genres: game.genres,
       trailerUrl: game.trailerUrl,
-      photos: game.photos
+      photos: game.photos,
+      translations: game.translations
     }
   }
 
@@ -114,7 +115,8 @@ export class InterestService {
       tags: book.tags,
       genres: book.genres,
       trailerUrl: book.trailerUrl,
-      photos: book.photos
+      photos: book.photos,
+      translations: book.translations
     }
   }
 
@@ -133,7 +135,8 @@ export class InterestService {
       tags: movie.tags,
       genres: movie.genres,
       trailerUrl: movie.trailerUrl,
-      photos: movie.photos
+      photos: movie.photos,
+      translations: movie.translations
     }
   }
 }

@@ -1,0 +1,14 @@
+.content-wrapper {
+  width: 100%;
+  border-radius: var(--border-radius-big);
+  background-color: var(--list-page-bg);
+}
+
+.page-header {
+  width: 100%;
+  aspect-ratio: 11/2;
+}
+
+.page-header > img {
+  object-fit: cover;
+}

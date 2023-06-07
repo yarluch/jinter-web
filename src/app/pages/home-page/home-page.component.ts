@@ -26,30 +26,33 @@ export class HomePageComponent implements OnInit {
               private location: Location,
               private interestControllerService: InterestControllerService,
               private interestService: InterestService) {
+
     this.class = "main-content-wrapper"
 
-    this.interestService.getPopular().subscribe(
-      data => {
-        this.popularInterests = data
-      },
-      error => {
-        alert('Error occurred');
-      }
-    );
-
-    this.interestService.getSystemRecommendations().subscribe(
-      data => {
-        this.systemLists = data
-      },
-      error => {
-        alert('Error occurred');
-      }
-    );
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.interestControllerService.configureLinkAccess(params)
-    })
+      this.interestControllerService.configureLinkAccess(params);
+
+      this.interestService.getPopular().subscribe(
+        data => {
+          this.popularInterests = data
+        },
+        error => {
+          alert('Error occurred');
+        }
+      );
+
+      this.interestService.getSystemRecommendations().subscribe(
+        data => {
+          this.systemLists = data
+        },
+        error => {
+          alert('Error occurred');
+        }
+      );
+    });
+
   }
 }

@@ -61,6 +61,7 @@ h2, form-buttons-group, .sign-up-fields {
 
 .content-wrapper {
   position: relative;
+  /*max-height: 0;*/
   width: 600px;
   padding: 20px 60px;
   box-sizing: border-box;
@@ -71,7 +72,12 @@ h2, form-buttons-group, .sign-up-fields {
   justify-content: space-between;
   border-radius: var(--border-radius-big);
   background: #FFF;
+  /*transition-delay: 0.4s;*/
 }
+
+/*.content-wrapper.active {
+  max-height: 100vh;
+}*/
 
 .form-header {
   width: 100%;
@@ -237,14 +243,12 @@ input[type=radio] {
 }
 
 .sign-up-fields {
-  height: 320px;
   max-height: 0;
   transition-delay: 0.2s;
 }
 
 .sign-up-fields.active {
-  height: 320px;
-  max-height: 320px;
+  max-height: 100vh;
   transition-delay: 0s;
 }
 

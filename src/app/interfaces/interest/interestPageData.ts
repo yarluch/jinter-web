@@ -1,5 +1,6 @@
 import {Tag} from "./tags/tag";
 import {Photo} from "./photos/photo";
+import {InterestTranslation} from "./translations/interestTranslation";
 
 export interface InterestPageData {
   id: string,
@@ -15,5 +16,6 @@ export interface InterestPageData {
   status: number,
   tags: Array<Tag>,
   genres: Array<Tag>,
-  photos: Array<Photo>
+  photos: Array<Photo>,
+  translations: Array<InterestTranslation>
 }

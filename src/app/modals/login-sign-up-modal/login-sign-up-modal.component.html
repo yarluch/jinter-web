@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper" [class.active]="state !== ''">
   <button class="close-button" (click)="closeForm()"></button>
   <div class="form-header">
     <img class="logo" ngSrc="/assets/img/logo/logo_base.png" alt="logo" height="132" width="312">
@@ -35,7 +35,7 @@
       <label for="password">{{"login-sign-up.password" | translate}}</label>
       <div class="password-group">
         <input formControlName="password" type="password" id="password"
-               [type]="isPasswordVisible ? 'text' : 'password'">
+               [type]="isPasswordVisible ? 'text' : 'password'" (change)="updatePasswordConfValidators()">
         <button type="button" class="show-hide"
                 [class.hide]="isPasswordVisible"
                 (click)="changePasswordVisibility()"></button>
@@ -149,7 +149,7 @@
     </div>
 
     <div class="form-buttons-group" [class.hidden]="state !== environment.SIGN_UP">
-      <button class="button" (click)="signUp()" [disabled]="form.invalid">{{"login-sign-up.sign-up-btn" | translate}}</button>
+      <button class="button" (click)="signUp()" [disabled]="form.invalid || !arePasswordsMatch()">{{"login-sign-up.sign-up-btn" | translate}}</button>
 
       <div class="redirection-group">
         {{"login-sign-up.have-an-account" | translate}}

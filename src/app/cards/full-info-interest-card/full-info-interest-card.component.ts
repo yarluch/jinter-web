@@ -1,17 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {InterestCardData} from "../../interfaces/interest/interestCardData";
 import {LocaleControllerService} from "../../services/locale-controller.service";
-import {Locale} from "../../types/types";
 import {InterestControllerService} from "../../services/interest-controller.service";
+import {Locale} from "../../types/types";
 import {environment} from "../../../environments/environment.prod";
 
 @Component({
-  selector: 'interest-card',
-  templateUrl: './interest-card.component.html',
-  styleUrls: ['./interest-card.component.css']
+  selector: 'full-info-interest-card',
+  templateUrl: './full-info-interest-card.component.html',
+  styleUrls: ['./full-info-interest-card.component.css']
 })
-export class InterestCardComponent implements OnInit {
-
+export class FullInfoInterestCardComponent implements OnInit {
   alternativePhoto: string = 'https://assets-prd.ignimgs.com/2020/09/29/genshin-impact-button-fin-1601346152039.jpg'
 
   @Input('interest-data')
@@ -54,5 +53,5 @@ export class InterestCardComponent implements OnInit {
     this.description = this.data.translations[0].description;
   }
 
-  protected readonly environment = environment;
+    protected readonly environment = environment;
 }

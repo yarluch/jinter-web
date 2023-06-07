@@ -27,14 +27,15 @@ export class LoginSignUpModalComponent implements OnInit {
   state: string = '';
 
   passwordControl = new FormControl('');
+  passwordConfirmationControl = new FormControl('', [
+    Validators.required,
+    PasswordValidators.passwordsNotMatches(this.passwordControl)
+  ]);
 
   form = new FormGroup({
     'username': new FormControl(''),
     'password': this.passwordControl,
-    'password-confirmation': new FormControl('', [
-      Validators.required,
-      PasswordValidators.passwordsNotMatches(this.passwordControl)
-    ]),
+    'password-confirmation': this.passwordConfirmationControl,
     'email': new FormControl('', [
       Validators.required,
       Validators.email
@@ -76,10 +77,6 @@ export class LoginSignUpModalComponent implements OnInit {
 
 
     });
-    /*this.form.get('username')?.clearValidators()
-    this.form.get('username')?.updateValueAndValidity()*/
-
-    /*this.form.markAsUntouched()*/
   }
 
   ngOnInit(): void {
@@ -149,11 +146,13 @@ export class LoginSignUpModalComponent implements OnInit {
   }
 
   isPasswordInvalid() {
-    return this.form.get('password')?.touched && this.form.get('password')?.invalid;
+    return this.form.get('password')?.touched &&
+      this.form.get('password')?.invalid;
   }
 
   isPasswordConfInvalid() {
-    return this.form.get('password-confirmation')?.touched && this.form.get('password-confirmation')?.invalid;
+    return this.form.get('password-confirmation')?.touched &&
+      this.form.get('password-confirmation')?.invalid;
   }
 
   isDateOfBirthInvalid() {
@@ -217,7 +216,13 @@ export class LoginSignUpModalComponent implements OnInit {
     this.visibilityControllerService.setLoginSingUpState(state);
   }
 
+  updatePasswordConfValidators() {
+    this.form.get('password-confirmation')?.updateValueAndValidity();
+  }
+
   protected readonly environment = environment;
 
-
+  arePasswordsMatch() {
+    return this.form.get('password')?.value == this.form.get('password-confirmation')?.value;
+  }
 }

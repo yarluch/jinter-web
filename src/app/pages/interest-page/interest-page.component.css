@@ -29,6 +29,7 @@
   width: 1200px;
   box-sizing: border-box;
   padding-left: 20px;
+  padding-bottom: 100px;
   margin-left: auto;
 }
 
@@ -74,4 +75,13 @@ h1 {
 
 .gallery {
   /*margin-bottom: ;*/
+}
+
+p {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+h2 {
+  margin: 25px 0 10px;
 }

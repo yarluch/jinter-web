@@ -21,18 +21,10 @@ export class PasswordValidators {
 
   static passwordsNotMatches(password: FormControl): {(control: AbstractControl): ValidationErrors | null}{
     return (control: AbstractControl): ValidationErrors | null => {
+      if (control.untouched)
+        return null;
 
-      return password.value == control.value ? null : { 'passwords-not-matches': true}
-
-      /*let v: number = +control.value;
-      if (isNaN(v)) {
-        return { 'gte': true, 'requiredValue': val }
-      }
-      if (v <= +val) {
-        return { 'gte': true, 'requiredValue': val }
-      }
-
-      return null;*/
+      return password.value == control.value ? null : { 'passwords-not-matches': true};
 
     }
 

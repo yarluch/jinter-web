@@ -34,7 +34,37 @@
                   [url]="interestData.trailerUrl" [is-video]="true"></gallery-card>
 
     <ng-container *ngFor="let photo of interestData.photos">
-      <gallery-card [url]="photo.url"></gallery-card>
+      <gallery-card *ngIf="!photo.isPoster"
+                    [url]="photo.url"></gallery-card>
+    </ng-container>
+  </slider>
+
+  <p>{{interestData.description}}</p>
+
+  <h2>{{"interest.genres" | translate}}</h2>
+
+  <div class="chip-container">
+    <ng-container *ngFor="let genre of interestData.genres">
+      <genre-chip [genre]="genre"></genre-chip>
+    </ng-container>
+  </div>
+
+  <h2>{{"interest.similar." + interest | translate}}</h2>
+  <slider class="recommendations"
+          [item-size]="MEDIUM" [autoplay]="true" [infinite]="true"
+          *ngIf="recommendations">
+    <ng-container *ngFor="let recommendation of recommendations.currentInterest">
+      <interest-card [interest-data]="recommendation"></interest-card>
+    </ng-container>
+  </slider>
+
+  <h2>{{"interest.similar-other." + interest | translate}}</h2>
+  <slider class="recommendations-other"
+          [item-size]="MEDIUM" [autoplay]="true" [infinite]="true"
+          *ngIf="recommendations">
+    <ng-container *ngFor="let recommendation of recommendations.anotherInterests">
+      <interest-card [interest-data]="recommendation.data"
+                     [interest]="recommendation.interest"></interest-card>
     </ng-container>
   </slider>
 </div>

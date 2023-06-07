@@ -25,6 +25,9 @@ import { LoginSignUpModalComponent } from './modals/login-sign-up-modal/login-si
 import {CustomRouteReuseStrategy} from "./custom-route-reuse-strategy";
 import { TagChipComponent } from './chips/tag-chip/tag-chip.component';
 import { GalleryCardComponent } from './cards/gallery-card/gallery-card.component';
+import { GenreChipComponent } from './chips/genre-chip/genre-chip.component';
+import { FullInfoInterestCardComponent } from './cards/full-info-interest-card/full-info-interest-card.component';
+import { ListPageComponent } from './pages/list-page/list-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { GalleryCardComponent } from './cards/gallery-card/gallery-card.componen
     NotFoundPageComponent,
     LoginSignUpModalComponent,
     TagChipComponent,
-    GalleryCardComponent
+    GalleryCardComponent,
+    GenreChipComponent,
+    FullInfoInterestCardComponent,
+    ListPageComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +83,10 @@ import { GalleryCardComponent } from './cards/gallery-card/gallery-card.componen
       {
         path: `:interest-type/${environment.INTEREST_PAGE_PATH}/:interestId`,
         component: InterestPageComponent
+      },
+      {
+        path: `:interest-type/${environment.LIST_PAGE_PATH}/:interestId`,
+        component: ListPageComponent
       },
       {
         path: `:interest-type/${environment.PROFILE_PAGE_PATH}/:userId`,

@@ -67,15 +67,15 @@ export class SliderComponent implements AfterViewInit {
     }
   }
 
-  @HostListener('mousedown', ['$event']) onDown(event: PointerEvent): void {
+  @HostListener('document:mousedown', ['$event']) onDown(event: PointerEvent): void {
     this.isMouseDown = true
   }
 
-  @HostListener('mousemove', ['$event']) onMove(event: PointerEvent): void {
+  @HostListener('document:mousemove', ['$event']) onMove(event: PointerEvent): void {
     this.class = this.isMouseDown ? 'blocked-links' : '';
   }
 
-  @HostListener('mouseup') onDragEnd(): void {
+  @HostListener('document:mouseup') onDragEnd(): void {
     this.isMouseDown = false
   }
 }

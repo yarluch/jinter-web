@@ -48,5 +48,18 @@
       "date-of-birth-empty": "Date of birth must be filled",
       "date-of-birth-age": "User must be 13 years or older"
     }
+  },
+  "interest": {
+    "genres": "Genres",
+    "similar": {
+      "games": "Similar games",
+      "books": "Similar books",
+      "movies": "Similar movies"
+    },
+    "similar-other": {
+      "games": "Similar books and movies",
+      "books": "Similar games and movies",
+      "movies": "Similar games and books"
+    }
   }
 }

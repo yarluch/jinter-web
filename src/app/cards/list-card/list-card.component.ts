@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ListCardData} from "../../interfaces/listCardData";
 import {RecommendationListType} from "../../enums/RecommendationListType";
-import {PrivacyStatus} from "../../enums/PrivacyStatus";
 import {LocaleControllerService} from "../../services/locale-controller.service";
 import {Locale} from "../../types/types";
+import {environment} from "../../../environments/environment.prod";
+import {InterestControllerService} from "../../services/interest-controller.service";
 
 @Component({
   selector: 'list-card',
@@ -12,20 +13,15 @@ import {Locale} from "../../types/types";
 })
 export class ListCardComponent implements OnInit {
   @Input('list-data')
-  data: ListCardData = {
-    creator: "",
-    id: 'dsfdf-sdfsdf-sdf',
-    name: '',
-    nameUa: '',
-    coverColor: '#E2842C',
-    photoUrl: 'https://wallpapercave.com/uwp/uwp935605.png',
-    type: RecommendationListType.System,
-    privacyStatus: PrivacyStatus.AvailableForAll
-  }
+  data!: ListCardData;
 
   listName = ''
 
-  constructor(private localeControllerService : LocaleControllerService) {
+  @Input('interest')
+  interest = ''
+
+  constructor(private localeControllerService : LocaleControllerService,
+              private interestController: InterestControllerService) {
     localeControllerService.getCurrentObservable().subscribe(locale => {
       this.updateListTitle(locale);
     });
@@ -33,6 +29,8 @@ export class ListCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateListTitle(this.localeControllerService.getCurrentLocale());
+
+    this.interest = this.interest != '' ? this.interest : this.interestController.getCurrentInterest();
   }
 
   updateListTitle(locale: Locale) {
@@ -47,4 +45,5 @@ export class ListCardComponent implements OnInit {
   }
 
   protected readonly RecommendationListType = RecommendationListType;
+  protected readonly environment = environment;
 }

@@ -6,8 +6,8 @@
   padding: 5px 10px;
   border-radius: 60px;
   margin: 5px;
-  background: var(--tag-bg-color);
-  color: var(--tag-font-color);
+  background: var(--genre-bg-color);
+  color: var(--genre-font-color);
 
   transition-property: all;
   transition-timing-function: var(--transition-function-standard);

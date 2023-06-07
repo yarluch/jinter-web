@@ -67,6 +67,7 @@ export class InterestControllerService {
     let currentInterest = this.getCurrentInterest()
 
 
+
     if (isRedirectable && isInterestIncorrect) {
       this.location.replaceState(`/${environment.NOT_FOUND_PAGE_PATH}`);
     } else if (isInterestIncorrect) {

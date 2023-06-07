@@ -2,7 +2,7 @@ import {Franchise} from "../franchise/franchise";
 import {Author} from "../authors/author";
 import {Tag} from "../tags/tag";
 import {Photo} from "../photos/photo";
-import {MovieTranslation} from "../translations/movieTranslation";
+import {InterestTranslation} from "../translations/interestTranslation";
 
 export interface MovieModel {
   id: string,
@@ -31,5 +31,5 @@ export interface MovieModel {
   genres: Array<Tag>,
   tags: Array<Tag>,
   photos: Array<Photo>,
-  translations: Array<MovieTranslation>
+  translations: Array<InterestTranslation>
 }

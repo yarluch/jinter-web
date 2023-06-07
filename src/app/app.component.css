@@ -17,11 +17,16 @@
   --bg-accent-color: #051439;
   --blackout-color: #1D234199;
 
-
   --font-color: #FFF;
   --menu-font-color: #FFF;
   --card-font-color: #FFF;
   --button-font-color: #FFF;
+
+  --tag-font-color: #FFF;
+  --tag-bg-color: #051439;
+
+  --genre-font-color: #FFF;
+  --genre-bg-color: #DA67DC;
 
   --link-active-color: #DA67DC;
 
@@ -35,6 +40,11 @@
 
   --author-card-bg-color-1: #72389F;
   --author-card-bg-color-2: #4B236A;
+
+  --list-page-bg: #72389F;
+
+  --profile-page-bg: #72389F;
+  --profile-page-header-bg: #4B236A;
 
   --button-primary-gradient-bg: linear-gradient(to right, #DA67DC 0%, #E2842C 51%, #DA67DC 100%);
   --button-simple-bg: #E2842C;
@@ -54,11 +64,16 @@
   --bg-accent-color: #280A0A;
   --blackout-color: #FFEDCE99;
 
-
   --font-color: #280A0A;
   --menu-font-color: #FFF;
   --card-font-color: #FFF;
   --button-font-color: #FFF;
+
+  --tag-font-color: #280A0A;
+  --tag-bg-color: #DDB480;
+
+  --genre-font-color: #FFF;
+  --genre-bg-color: #787D46;
 
   --link-active-color: #E2842C;
 
@@ -72,6 +87,11 @@
 
   --author-card-bg-color-1: #787D46;
   --author-card-bg-color-2: #787D46;
+
+  --list-page-bg: #DDB480;
+
+  --profile-page-bg: #787D46;
+  --profile-page-header-bg: #3F421C;
 
   --button-primary-gradient-bg: linear-gradient(to right, #AD4A2B 0%, #E2842C 51%, #AD4A2B 100%);
   --button-simple-bg: #AD4A2B;
@@ -91,11 +111,16 @@
   --bg-accent-color: #323232;
   --blackout-color: #1B1B1B99;
 
-
   --font-color: #FFF;
   --menu-font-color: #FFF;
   --card-font-color: #FFF;
   --button-font-color: #FFF;
+
+  --tag-font-color: #FFF;
+  --tag-bg-color: #323232;
+
+  --genre-font-color: #1B1B1B;
+  --genre-bg-color: #EEEEEE;
 
   --link-active-color: #308777;
 
@@ -109,6 +134,11 @@
 
   --author-card-bg-color-1: #202570;
   --author-card-bg-color-2: #1B1B1B;
+
+  --list-page-bg: #3F3F3F;
+
+  --profile-page-bg: #308777;
+  --profile-page-header-bg: #1B4E44;
 
   --button-primary-gradient-bg: linear-gradient(to right, #912AC2 0%, #31A8FF 51%, #912AC2 100%);
   --button-simple-bg: #31A8FF;
@@ -251,4 +281,8 @@
   margin: 0 auto;
 }
 
-
+:host ::ng-deep .narrow-content-wrapper {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+}
