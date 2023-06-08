@@ -34,9 +34,13 @@
   --searchbar-bg-color-hover: #3b1a56;
 
   --card-color-1: #E2842C;
-  --card-color-2: #72389F;
+  --card-color-1-hover: #be6f24;
+  --card-color-2: #AE64E8;
+  --card-color-2-hover: #924fc7;
   --card-color-3: #CF2D2D;
+  --card-color-3-hover: #b02121;
   --card-color-4: #DA67DC;
+  --card-color-4-hover: #b649b7;
 
   --author-card-bg-color-1: #72389F;
   --author-card-bg-color-2: #4B236A;
@@ -80,10 +84,14 @@
   --searchbar-bg-color: #193439;
   --searchbar-bg-color-hover: #0d2d34;
 
-  --card-color-1: #E2842C;
-  --card-color-2: #72389F;
-  --card-color-3: #CF2D2D;
-  --card-color-4: #DA67DC;
+  --card-color-1: #193439;
+  --card-color-1-hover: #102326;
+  --card-color-2: #E2842C;
+  --card-color-2-hover: #bb671a;
+  --card-color-3: #503143;
+  --card-color-3-hover: #3f2434;
+  --card-color-4: #AD4A2B;
+  --card-color-4-hover: #933a1f;
 
   --author-card-bg-color-1: #787D46;
   --author-card-bg-color-2: #787D46;
@@ -127,10 +135,14 @@
   --searchbar-bg-color: #3D7369;
   --searchbar-bg-color-hover: #285b51;
 
-  --card-color-1: #E2842C;
-  --card-color-2: #72389F;
-  --card-color-3: #CF2D2D;
-  --card-color-4: #DA67DC;
+  --card-color-1: #308777;
+  --card-color-1-hover: #1e6456;
+  --card-color-2: #31A8FF;
+  --card-color-2-hover: #218cda;
+  --card-color-3: #202570;
+  --card-color-3-hover: #151a59;
+  --card-color-4: #912AC2;
+  --card-color-4-hover: #7c1ea9;
 
   --author-card-bg-color-1: #202570;
   --author-card-bg-color-2: #1B1B1B;
@@ -278,11 +290,11 @@
 :host ::ng-deep .main-content-wrapper {
   display: block;
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
 }
 
 :host ::ng-deep .narrow-content-wrapper {
   display: block;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
 }

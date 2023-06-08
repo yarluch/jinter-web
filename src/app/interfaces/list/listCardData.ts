@@ -1,6 +1,6 @@
-import {RecommendationListType} from "../enums/RecommendationListType";
-import {PrivacyStatus} from "../enums/PrivacyStatus";
-import {ProfileCardData} from "./user/profileCardData";
+import {RecommendationListType} from "../../enums/RecommendationListType";
+import {PrivacyStatus} from "../../enums/PrivacyStatus";
+import {ProfileCardData} from "../user/profileCardData";
 
 export interface ListCardData {
   id: string;
@@ -8,6 +8,7 @@ export interface ListCardData {
   nameUa: string;
   creator: string;
   ownerProfile: ProfileCardData;
+  isAddedToOwnLists: boolean;
   type: RecommendationListType;
   privacyStatus: PrivacyStatus;
   coverColor: string;

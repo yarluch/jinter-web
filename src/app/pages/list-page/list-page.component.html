@@ -1,5 +1,13 @@
 <div class="content-wrapper">
-  <header class="page-header">
-    <img src="{{'dsdf'}}" alt="">
+  <header class="page-header"
+          [style]="{'background': listData.coverColor ?? '#E2842C'}">
+    <h1>{{listName}}</h1>
+    <img src="{{listData.photoUrl}}" alt="" *ngIf="listData.photoUrl">
   </header>
+  <div class="list-body">
+    <ng-container *ngFor="let interest of listData.interests; index as index">
+      <full-info-interest-card [interest-data]="interest"
+                               [index]="index"></full-info-interest-card>
+    </ng-container>
+  </div>
 </div>

@@ -5,21 +5,11 @@ import {BehaviorSubject, Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ContentVisibilityControllerService {
-
-
-  /*private isInterfaceVisible = new BehaviorSubject<boolean>(true);*/
   private isBlackoutActive = new BehaviorSubject<boolean>(false);
   private isDialogBlackoutActive = new BehaviorSubject<boolean>(false);
   private loginSingUpState = new BehaviorSubject<string>('');
 
   constructor() { }
-
-  /*getIsInterfaceVisible(): Observable<boolean> {
-    return this.isInterfaceVisible.asObservable();
-  }
-  setIsInterfaceVisible(value: boolean) {
-    this.isInterfaceVisible.next(value);
-  }*/
 
   getIsBlackoutActive(): Observable<boolean> {
     return this.isBlackoutActive.asObservable();

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ListCardData} from "../../interfaces/listCardData";
+import {ListCardData} from "../../interfaces/list/listCardData";
 import {RecommendationListType} from "../../enums/RecommendationListType";
 import {LocaleControllerService} from "../../services/locale-controller.service";
 import {Locale} from "../../types/types";

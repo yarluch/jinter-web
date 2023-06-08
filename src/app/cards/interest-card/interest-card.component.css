@@ -61,9 +61,11 @@ h3, p {
 
 .interest-details > p {
   margin-top: 10px;
-  max-height: 31%;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 
 .interest-details > h3 {

@@ -5,10 +5,36 @@
 }
 
 .page-header {
+  position: relative;
+  display: block;
+  overflow: hidden;
   width: 100%;
-  aspect-ratio: 11/2;
+  border-radius: var(--border-radius-big);
+  aspect-ratio: 10/2;
+}
+
+.page-header * {
+  color: var(--card-font-color);
 }
 
 .page-header > img {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.page-header > h1 {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  margin-bottom: 0;
+}
+
+.list-body {
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 14px;
+  row-gap: 14px;
 }

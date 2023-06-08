@@ -1,7 +1,15 @@
 <a class="card-wrapper" [routerLink]="['/' + interest, environment.INTEREST_PAGE_PATH, data['id']]">
-  <div class="interest-details">
-    <h3 class="interest-title">{{title}}</h3>
-    <p>{{description}}</p>
+  <div class="image-wrapper">
+    <img class="card-image" ngSrc="{{data['mainPhotoUrl'] ?? alternativePhoto}}" fill alt="{{title}}">
   </div>
-  <img class="card-image" ngSrc="{{data['mainPhotoUrl'] ?? alternativePhoto}}" fill alt="{{title}}">
+
+  <div class="interest-details">
+    <h2 class="interest-title">{{title}}</h2>
+    <p>{{description}}</p>
+
+    <div class="score">
+      <img src="/assets/img/interest-card/trophy.png" alt="">
+      {{data.averageCustomerReviewRate?.toFixed(1) ?? '-'}}
+    </div>
+  </div>
 </a>

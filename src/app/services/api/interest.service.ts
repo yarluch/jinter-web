@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment.prod";
 import {InterestCardData} from "../../interfaces/interest/interestCardData";
 import {InterestControllerService} from "../interest-controller.service";
-import {ListCardData} from "../../interfaces/listCardData";
+import {ListCardData} from "../../interfaces/list/listCardData";
 import {GameModel} from "../../interfaces/interest/specificData/gameModel";
 import {map} from "rxjs";
 import {InterestPageData} from "../../interfaces/interest/interestPageData";
@@ -11,6 +11,10 @@ import {Tag} from "../../interfaces/interest/tags/tag";
 import {TagTranslation} from "../../interfaces/interest/translations/tagTranslation";
 import {BookModel} from "../../interfaces/interest/specificData/bookModel";
 import {MovieModel} from "../../interfaces/interest/specificData/movieModel";
+import {BookListModel} from "../../interfaces/list/specificData/bookListModel";
+import {ListPageData} from "../../interfaces/list/listPageData";
+import {GameListModel} from "../../interfaces/list/specificData/gameListModel";
+import {MovieListModel} from "../../interfaces/list/specificData/movieListModel";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +38,6 @@ export class InterestService {
   }
 
   getInterest(id: string) {
-
     switch (this.interest) {
       case 'books':
         return this.getBook(id).pipe(
@@ -120,7 +123,7 @@ export class InterestService {
     }
   }
 
-  private movieToInterest(movie: MovieModel) {
+  private movieToInterest(movie: MovieModel): InterestPageData {
     return {
       ageRestriction: movie.ageRestriction,
       averageCustomerReviewRate: movie.averageCustomerReviewRate,
@@ -138,5 +141,90 @@ export class InterestService {
       photos: movie.photos,
       translations: movie.translations
     }
+  }
+
+  getList(id: string) {
+    switch (this.interest) {
+      case 'books':
+        return this.getBookList(id).pipe(
+          map((bookList: BookListModel): ListPageData => {
+            return this.bookListToInterestList(bookList);
+          })
+        );
+
+      case 'movies':
+        return this.getMovieList(id).pipe(
+          map((movieList: MovieListModel): ListPageData => {
+            return this.movieListToInterestList(movieList);
+          })
+        );
+
+      default:
+        return this.getGameList(id).pipe(
+          map((gameList: GameListModel): ListPageData => {
+            return this.gameListToInterestList(gameList);
+          })
+        );
+    }
+  }
+
+  private getGameList(id: string) {
+    return this.http.get<GameListModel>(`${environment.URL}/g/recommendationlists/${id}`);
+  }
+
+  private getBookList(id: string) {
+    return this.http.get<BookListModel>(`${environment.URL}/books/recommendationlists/${id}`);
+  }
+
+  private getMovieList(id: string) {
+    return this.http.get<MovieListModel>(`${environment.URL}/movies/recommendationlists/${id}`);
+  }
+
+  private gameListToInterestList(gameList: GameListModel): ListPageData {
+    return {
+      coverColor: gameList.coverColor,
+      creator: gameList.creator,
+      id: gameList.id,
+      interests: gameList.games,
+      isAddedToOwnLists: gameList.isAddedToOwnLists,
+      name: gameList.name,
+      nameUa: gameList.nameUa,
+      ownerProfile: gameList.ownerProfile,
+      photoUrl: gameList.photoUrl,
+      privacyStatus: gameList.privacyStatus,
+      type: gameList.type
+    };
+  }
+
+  private bookListToInterestList(bookList: BookListModel): ListPageData {
+    return {
+      coverColor: bookList.coverColor,
+      creator: bookList.creator,
+      id: bookList.id,
+      interests: bookList.books,
+      isAddedToOwnLists: bookList.isAddedToOwnLists,
+      name: bookList.name,
+      nameUa: bookList.nameUa,
+      ownerProfile: bookList.ownerProfile,
+      photoUrl: bookList.photoUrl,
+      privacyStatus: bookList.privacyStatus,
+      type: bookList.type
+    };
+  }
+
+  private movieListToInterestList(movieList: MovieListModel): ListPageData {
+    return {
+      coverColor: movieList.coverColor,
+      creator: movieList.creator,
+      id: movieList.id,
+      interests: movieList.movies,
+      isAddedToOwnLists: movieList.isAddedToOwnLists,
+      name: movieList.name,
+      nameUa: movieList.nameUa,
+      ownerProfile: movieList.ownerProfile,
+      photoUrl: movieList.photoUrl,
+      privacyStatus: movieList.privacyStatus,
+      type: movieList.type
+    };
   }
 }

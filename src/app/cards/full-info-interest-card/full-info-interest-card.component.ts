@@ -8,7 +8,13 @@ import {environment} from "../../../environments/environment.prod";
 @Component({
   selector: 'full-info-interest-card',
   templateUrl: './full-info-interest-card.component.html',
-  styleUrls: ['./full-info-interest-card.component.css']
+  styleUrls: ['./full-info-interest-card.component.css'],
+  host:     {
+    '[class.color-1]':'index % 4 == 0',
+    '[class.color-2]':'index % 4 == 1',
+    '[class.color-3]':'index % 4 == 2',
+    '[class.color-4]':'index % 4 == 3'
+  }
 })
 export class FullInfoInterestCardComponent implements OnInit {
   alternativePhoto: string = 'https://assets-prd.ignimgs.com/2020/09/29/genshin-impact-button-fin-1601346152039.jpg'
@@ -20,6 +26,9 @@ export class FullInfoInterestCardComponent implements OnInit {
     averageCustomerReviewRate: 0,
     translations: []
   }
+
+  @Input('index')
+  index = 0
 
   title = '';
   description = '';

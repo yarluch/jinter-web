@@ -5,7 +5,7 @@ import {InterestControllerService} from "../../services/interest-controller.serv
 import {Location} from "@angular/common";
 import {InterestCardData} from "../../interfaces/interest/interestCardData";
 import {InterestService} from "../../services/api/interest.service";
-import {ListCardData} from "../../interfaces/listCardData";
+import {ListCardData} from "../../interfaces/list/listCardData";
 
 @Component({
   selector: 'home-page',
