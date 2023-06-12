@@ -29,7 +29,7 @@
   </div>
 
   <slider class="gallery"
-          [item-size]="MEDIUM_2" [autoplay]="true" [infinite]="true">
+          [item-size]="MEDIUM_2" [autoplay]="true" [infinite]="true" *ngIf="interestData">
     <gallery-card *ngIf="interestData.trailerUrl"
                   [url]="interestData.trailerUrl" [is-video]="true"></gallery-card>
 
