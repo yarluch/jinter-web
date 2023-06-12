@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -28,6 +28,7 @@ import { GalleryCardComponent } from './cards/gallery-card/gallery-card.componen
 import { GenreChipComponent } from './chips/genre-chip/genre-chip.component';
 import { FullInfoInterestCardComponent } from './cards/full-info-interest-card/full-info-interest-card.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
+import { ReviewCardComponent } from './cards/review-card/review-card.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
     GalleryCardComponent,
     GenreChipComponent,
     FullInfoInterestCardComponent,
-    ListPageComponent
+    ListPageComponent,
+    ReviewCardComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +102,8 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
     ReactiveFormsModule
   ],
   providers: [{provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }

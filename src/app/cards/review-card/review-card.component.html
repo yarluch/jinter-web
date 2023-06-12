@@ -1,0 +1,21 @@
+<div class="card-wrapper">
+  <div class="user-data">
+    <img class="creator-photo"
+         ngSrc="{{review.author.photo}}"
+         height="200"
+         width="200"
+         alt="creator photo">
+    <h3 class="username">{{'@' + review.author.userName}}</h3>
+    <div class="score">
+      <img src="/assets/img/review/{{interest == 'movies' && index % 4 == 0 ? 'trophy_dark.png' : 'trophy.png'}}" alt="">
+      {{review.rate ?? '-'}}
+    </div>
+  </div>
+
+  <div class="review-content">
+    <a [routerLink]="['/' + interest, environment.INTEREST_PAGE_PATH, review.interest.id]">
+      <h2 class="game-title">{{title}}</h2>
+    </a>
+    <p>{{review.reviewDescription}}</p>
+  </div>
+</div>

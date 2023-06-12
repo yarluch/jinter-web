@@ -1,1 +1,61 @@
-<p>profile-page works!</p>
+<div class="content-wrapper">
+  <header class="page-header">
+    <img src="{{user.photo}}" alt="">
+    <div class="profile-details">
+      <h1>{{'@' + user.userName}}</h1>
+      <p class="profile-description">{{user.description}}</p>
+      <div class="statistics-group">
+        <div class="statistics-view">
+          <span>{{"profile.followers"| translate}}</span>
+          <span>{{user.followersCount}}</span>
+        </div>
+        <div class="divider"></div>
+        <div class="statistics-view">
+          <span>{{"profile.followings"| translate}}</span>
+          <span>{{user.followingsCount}}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="profile-body">
+    <ul class="tab-switcher">
+      <li class="tab-button" [class.active]="currentTab == 0"
+          (click)="currentTab = 0">{{"profile.tabs.will." + interest | translate}}</li>
+      <li class="tab-button" [class.active]="currentTab == 1"
+          (click)="currentTab = 1">{{"profile.tabs.in-progress." + interest | translate}}</li>
+      <li class="tab-button" [class.active]="currentTab == 2"
+          (click)="currentTab = 2">{{"profile.tabs.finished." + interest | translate}}</li>
+      <li class="tab-button" [class.active]="currentTab == 3"
+          (click)="currentTab = 3">{{"profile.tabs.lists"| translate}}</li>
+      <li class="tab-button" [class.active]="currentTab == 4"
+          (click)="currentTab = 4">{{"profile.tabs.reviews"| translate}}</li>
+    </ul>
+    <div [ngSwitch]="currentTab">
+      <div class="list interest-list" *ngSwitchCase="0">
+        <ng-container *ngFor="let interest of userActivityLists[0]">
+          <interest-card [interest-data]="interest"></interest-card>
+        </ng-container>
+      </div>
+      <div class="list interest-list" *ngSwitchCase="1">
+        <ng-container *ngFor="let interest of userActivityLists[1]">
+          <interest-card [interest-data]="interest"></interest-card>
+        </ng-container>
+      </div>
+      <div class="list interest-list" *ngSwitchCase="2">
+        <ng-container *ngFor="let interest of userActivityLists[2]">
+          <interest-card [interest-data]="interest"></interest-card>
+        </ng-container>
+      </div>
+      <div class="list collection-list" *ngSwitchCase="3">
+        <ng-container *ngFor="let list of userLists">
+          <list-card [list-data]="list"></list-card>
+        </ng-container>
+      </div>
+      <div class="list collection-review" *ngSwitchCase="4">
+        <ng-container *ngFor="let review of userReviews; index as index">
+          <review-card [review]="review" [index]="index"></review-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,14 +13,13 @@ import {ContentVisibilityControllerService} from "./services/content-visibility-
     '[class.hidden-interface]':'isDialogBlackoutActive'
   }
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Jinter';
 
   isBlackoutActive = false;
   isDialogBlackoutActive = false;
 
   @HostBinding('class') class!: string;
-
 
   constructor(private translateService: TranslateService,
               private localeControllerService : LocaleControllerService,
@@ -33,8 +32,5 @@ export class AppComponent implements OnInit {
       .subscribe(isActive => this.isBlackoutActive = isActive);
     visibilityControllerService.getIsDialogBlackoutActive()
       .subscribe(isActive => this.isDialogBlackoutActive = isActive);
-  }
-
-  ngOnInit(): void {
   }
 }

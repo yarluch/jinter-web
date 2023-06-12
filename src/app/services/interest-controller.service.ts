@@ -66,14 +66,16 @@ export class InterestControllerService {
     let isInterestIncorrect = !params.hasOwnProperty('interest-type') || !this.isInterestValid(params['interest-type']);
     let currentInterest = this.getCurrentInterest()
 
-
-
     if (isRedirectable && isInterestIncorrect) {
       this.location.replaceState(`/${environment.NOT_FOUND_PAGE_PATH}`);
-    } else if (isInterestIncorrect) {
+      return;
+    }
+
+    if (isInterestIncorrect) {
       let noInterestPath = url.replace(/^(\/[a-zA-Z]+)/, '');
       let newUrl = `/${currentInterest}${noInterestPath}`
       this.location.replaceState(newUrl);
+      return;
     }
 
     if (<Interest>params['interest-type'] != currentInterest) {

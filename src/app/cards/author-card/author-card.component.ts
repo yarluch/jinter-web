@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {RecommendationListType} from "../../enums/RecommendationListType";
-import {AuthorCardData} from "../../interfaces/AuthorCardData";
+import {AuthorCardData} from "../../interfaces/user/AuthorCardData";
 
 @Component({
   selector: 'author-card',
@@ -14,7 +14,7 @@ export class AuthorCardComponent implements OnInit {
     id: "sdfsdf-sdfsdfsd-sdfsdf",
     userName: "Uname",
     description: "Опис профілю. Дуже цікавий профіль, власник якого робить огляди на ігри.",
-    photoUrl: "https://wallpapercave.com/uwp/uwp935605.png"
+    photo: "https://wallpapercave.com/uwp/uwp935605.png"
   }
 
   @Input('alternative-style')

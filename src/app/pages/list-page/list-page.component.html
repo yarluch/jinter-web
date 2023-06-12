@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <header class="page-header"
-          [style]="{'background': listData.coverColor ?? '#E2842C'}">
+          [style]="{'background': '#' + listData.coverColor ?? '#E2842C'}">
     <h1>{{listName}}</h1>
     <img src="{{listData.photoUrl}}" alt="" *ngIf="listData.photoUrl">
   </header>

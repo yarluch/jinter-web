@@ -8,7 +8,7 @@ import {ContentVisibilityControllerService} from "../services/content-visibility
   templateUrl: './interest-switch.component.html',
   styleUrls: ['./interest-switch.component.css']
 })
-export class InterestSwitchComponent implements OnInit {
+export class InterestSwitchComponent {
   isSwitcherActive = false;
   currentInterest!: Interest;
 
@@ -17,14 +17,10 @@ export class InterestSwitchComponent implements OnInit {
     interestControllerService.getCurrentInterestObserver().subscribe(interest => this.currentInterest = interest)
   }
 
-  ngOnInit(): void {
-  }
-
   changeSwitcherState() {
     this.isSwitcherActive = !this.isSwitcherActive;
     this.visibilityControllerService.setIsBlackoutActive(this.isSwitcherActive);
   }
-
 
   changeInterest(interest: Interest) {
     this.changeSwitcherState();

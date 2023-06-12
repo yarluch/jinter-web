@@ -1,6 +1,7 @@
 :host {
   --button-gradient-background-size: 200% auto;
   --button-gradient-background-position-hover: right center;
+  --button-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 
   --border-radius-big: 20px;
 
@@ -32,6 +33,10 @@
 
   --searchbar-bg-color: #4B236A;
   --searchbar-bg-color-hover: #3b1a56;
+
+  --review-color-1: #E2842C;
+  --review-color-1-hover: #be6f24;
+  --review-card-1-font-color: #FFF;
 
   --card-color-1: #E2842C;
   --card-color-1-hover: #be6f24;
@@ -84,6 +89,10 @@
   --searchbar-bg-color: #193439;
   --searchbar-bg-color-hover: #0d2d34;
 
+  --review-color-1: #193439;
+  --review-color-1-hover: #102326;
+  --review-card-1-font-color: #FFF;
+
   --card-color-1: #193439;
   --card-color-1-hover: #102326;
   --card-color-2: #E2842C;
@@ -134,6 +143,10 @@
 
   --searchbar-bg-color: #3D7369;
   --searchbar-bg-color-hover: #285b51;
+
+  --review-color-1: #EEEEEE;
+  --review-color-1-hover: #d2caca;
+  --review-card-1-font-color: #1B1B1B;
 
   --card-color-1: #308777;
   --card-color-1-hover: #1e6456;
@@ -246,7 +259,8 @@
 }
 
 :host ::ng-deep .username,
-:host ::ng-deep .game-title{
+:host ::ng-deep .game-title,
+:host ::ng-deep .score {
   font-family: var(--accent-font);
   font-weight: var(--accent-font-weight);
 }
@@ -261,7 +275,7 @@
   font-size: 20px;
   padding: 10px 20px;
   border-radius: 60px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--button-box-shadow);
   transition-property: all;
   transition-timing-function: var(--transition-function-standard);
   transition-duration: var(--transition-medium-1);
@@ -297,4 +311,12 @@
   display: block;
   max-width: 1200px;
   margin: 0 auto 50px;
+}
+
+:host ::ng-deep .сol-narrow {
+  width: 300px;
+}
+
+:host ::ng-deep .сol-wide {
+  max-width: 1200px;
 }

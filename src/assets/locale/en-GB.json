@@ -60,6 +60,30 @@
       "games": "Similar books and movies",
       "books": "Similar games and movies",
       "movies": "Similar games and books"
+    },
+    "reviews": "Reviews"
+  },
+  "profile": {
+    "followers": "Followers",
+    "followings": "Followings",
+    "tabs": {
+      "will": {
+        "games": "To Play",
+        "books": "To Read",
+        "movies": "To Watch"
+      },
+      "in-progress": {
+        "games": "Play",
+        "books": "Read",
+        "movies": "Watch"
+      },
+      "finished": {
+        "games": "Played",
+        "books": "Have Been Read",
+        "movies": "Watched"
+      },
+      "lists": "Lists",
+      "reviews": "Reviews"
     }
   }
 }

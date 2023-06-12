@@ -1,0 +1,103 @@
+:host(.color-1) > .card-wrapper {
+  background-color: var(--review-color-1);
+}
+
+:host(.color-1) > .card-wrapper > .user-data {
+  background-color: var(--review-color-1-hover);
+}
+
+:host(.color-2) > .card-wrapper {
+  background-color: var(--card-color-2);
+}
+
+:host(.color-2) > .card-wrapper > .user-data {
+  background-color: var(--card-color-2-hover);
+}
+
+:host(.color-3) > .card-wrapper {
+  background-color: var(--card-color-3);
+}
+
+:host(.color-3) > .card-wrapper > .user-data {
+  background-color: var(--card-color-3-hover);
+}
+
+:host(.color-4) > .card-wrapper {
+  background-color: var(--card-color-4);
+}
+
+:host(.color-4) > .card-wrapper > .user-data {
+  background-color: var(--card-color-4-hover);
+}
+
+h2, h3, p, div {
+  color: var(--card-font-color);
+}
+
+:host(.color-1) h2,
+:host(.color-1) h3,
+:host(.color-1) p,
+:host(.color-1) div {
+  color: var(--review-card-1-font-color);
+}
+
+* {
+  transition-property: all;
+  transition-timing-function: var(--transition-function-standard);
+  transition-duration: var(--transition-medium-1);
+}
+
+.card-wrapper {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.user-data {
+  margin-right: 20px;
+  border-radius: var(--border-radius);
+  padding: 10px;
+}
+
+.creator-photo {
+  border-radius: 200px;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+}
+
+.username {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.score {
+  font-size: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.score > img {
+  height: 26px;
+}
+
+.game-title {
+  margin-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7;
+}

@@ -53,7 +53,12 @@ h3 {
 }
 
 p {
-  height: 43%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  line-clamp: 8;
+  -webkit-box-orient: vertical;
   text-align: center;
   line-height: 25px;
+  min-height: 43%;
 }

@@ -24,7 +24,7 @@ export class RecommendationService {
 
   getRecommendations(genres: Array<string>) {
     let genress = {genres: genres}
-    console.error(JSON.stringify(genress))
+
     return this.http.post<Recommendation>(`${environment.URL}/recommendation`,
       genress).pipe(
       map((recommendation: Recommendation): RecommendationPageData => {

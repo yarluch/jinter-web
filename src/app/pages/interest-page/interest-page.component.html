@@ -1,13 +1,13 @@
-<div class="photo-wrapper">
+<div class="photo-wrapper сol-narrow">
   <img src="{{interestData.mainPhotoUrl ??
   'https://assets-prd.ignimgs.com/2020/09/29/genshin-impact-button-fin-1601346152039.jpg'}}" alt="main photo">
 
   <div class="list-menu-group">
-    <button class="button button-simple">dfsdfsdfds</button>
+    <button class="button button-simple">В добірку</button>
   </div>
 
 </div>
-<div class="content-wrapper">
+<div class="content-wrapper сol-wide">
   <div class="content-header">
     <div class="header-group">
       <h1 class="game-title">{{interestData.name}}</h1>
@@ -67,4 +67,12 @@
                      [interest]="recommendation.interest"></interest-card>
     </ng-container>
   </slider>
+
+  <h2>{{"interest.reviews" | translate}}</h2>
+  <div class="reviews-list">
+    <ng-container *ngFor="let review of interestReviews; index as index">
+      <review-card [review]="review" [index]="index"></review-card>
+    </ng-container>
+  </div>
+
 </div>

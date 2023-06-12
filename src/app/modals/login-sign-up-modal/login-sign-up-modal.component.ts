@@ -56,10 +56,6 @@ export class LoginSignUpModalComponent implements OnInit {
               private authService: AuthenticationService,
               private userDataService: CurrentUserDataService) {
     visibilityControllerService.getLoginSingUpState().subscribe(async state => {
-      /*if ((this.state === environment.LOGIN && state === environment.SIGN_UP)
-        || (this.state === environment.SIGN_UP && state === environment.LOGIN))
-        this.form.markAsUntouched();*/
-
       this.state = state;
 
       if (state === environment.LOGIN || state === environment.SIGN_UP) {

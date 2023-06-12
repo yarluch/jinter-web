@@ -9,6 +9,7 @@ import {LocaleControllerService} from "../../services/locale-controller.service"
 import {Locale} from "../../types/types";
 import {RecommendationPageData} from "../../interfaces/recommendation/recommendationPageData";
 import {RecommendationService} from "../../services/api/recommendation.service";
+import {ReviewCardData} from "../../interfaces/review/reviewCardData";
 
 
 @Component({
@@ -24,6 +25,8 @@ export class InterestPageComponent implements OnInit {
 
   interestData!: InterestPageData;
   recommendations!: RecommendationPageData;
+  interestReviews: Array<ReviewCardData> = Array();
+
 
   title = '';
   description = '';
@@ -59,6 +62,15 @@ export class InterestPageComponent implements OnInit {
         },
         error => {
           console.error(error);
+        }
+      );
+
+      this.interestService.getInterestReviews(params['interestId']).subscribe(
+        data => {
+          this.interestReviews = data;
+        },
+        error => {
+          alert('Error occurred');
         }
       );
     });
