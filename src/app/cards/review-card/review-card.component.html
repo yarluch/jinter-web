@@ -5,7 +5,9 @@
          height="200"
          width="200"
          alt="creator photo">
-    <h3 class="username">{{'@' + review.author.userName}}</h3>
+    <h3 class="username"
+        [routerLink]="['/' + interest, environment.PROFILE_PAGE_PATH, review.author.id]"
+    >{{'@' + review.author.userName}}</h3>
     <div class="score">
       <img src="/assets/img/review/{{interest == 'movies' && index % 4 == 0 ? 'trophy_dark.png' : 'trophy.png'}}" alt="">
       {{review.rate ?? '-'}}
