@@ -70,12 +70,12 @@ export class InterestPageComponent implements OnInit {
           this.interestReviews = data;
         },
         error => {
-          alert('Error occurred');
+          alert('Error occurred ' + error);
         }
       );
     });
 
-
+    console.error('hi interest');
   }
 
   private updateTextData(locale: Locale) {

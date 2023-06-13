@@ -10,7 +10,7 @@ import {Location} from "@angular/common";
 })
 export class InterestControllerService {
   private currentInterest = new BehaviorSubject<Interest>('games');
-  private redirectablePages = [environment.INTEREST_PAGE_PATH, environment.LIST_PAGE_PATH]
+  private redirectablePages = [environment.INTEREST_PAGE_PATH, environment.LIST_PAGE_PATH, environment.NOT_FOUND_PAGE_PATH]
 
   constructor(private router: Router, private location: Location) {
   }
@@ -67,7 +67,7 @@ export class InterestControllerService {
     let currentInterest = this.getCurrentInterest()
 
     if (isRedirectable && isInterestIncorrect) {
-      this.location.replaceState(`/${environment.NOT_FOUND_PAGE_PATH}`);
+      this.router.navigate([`/${environment.NOT_FOUND_PAGE_PATH}`], {replaceUrl:true});
       return;
     }
 

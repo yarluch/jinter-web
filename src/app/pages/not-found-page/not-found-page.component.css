@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 100px;
+}
+
+p {
+  font-size: 30px;
+  margin-top: 15px;
+}

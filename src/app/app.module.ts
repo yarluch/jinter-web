@@ -29,6 +29,7 @@ import { GenreChipComponent } from './chips/genre-chip/genre-chip.component';
 import { FullInfoInterestCardComponent } from './cards/full-info-interest-card/full-info-interest-card.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { ReviewCardComponent } from './cards/review-card/review-card.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ReviewCardComponent } from './cards/review-card/review-card.component';
     GenreChipComponent,
     FullInfoInterestCardComponent,
     ListPageComponent,
-    ReviewCardComponent
+    ReviewCardComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,

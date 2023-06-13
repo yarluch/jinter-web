@@ -85,5 +85,9 @@
       "lists": "Lists",
       "reviews": "Reviews"
     }
+  },
+  "not-found": {
+    "page-not-found": "Page not Found",
+    "to-home": "Home"
   }
 }
