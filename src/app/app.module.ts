@@ -20,7 +20,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { InterestSwitchComponent } from './interest-switch/interest-switch.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import {environment} from "../environments/environment.prod";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginSignUpModalComponent } from './modals/login-sign-up-modal/login-sign-up-modal.component';
 import {CustomRouteReuseStrategy} from "./custom-route-reuse-strategy";
 import { TagChipComponent } from './chips/tag-chip/tag-chip.component';
@@ -97,11 +97,16 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
         component: ProfilePageComponent
       },
       {
+        path: `:interest-type/${environment.SEARCH_PAGE_PATH}/:keyword`,
+        component: SearchPageComponent
+      },
+      {
         path: '**',
         component: NotFoundPageComponent
       }
     ]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [{provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}],
   bootstrap: [AppComponent],

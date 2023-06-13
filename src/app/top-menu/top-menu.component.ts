@@ -6,6 +6,7 @@ import {LocaleControllerService} from "../services/locale-controller.service";
 import {ContentVisibilityControllerService} from "../services/content-visibility-controller.service";
 import {environment} from "../../environments/environment.prod";
 import {CurrentUserDataService} from "../services/current-user-data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'top-menu',
@@ -21,7 +22,11 @@ export class TopMenuComponent implements OnInit {
   currentLocale: string = ''
 
   currentInterest!: Interest;
-  constructor(public interestControllerService: InterestControllerService,
+
+  searchWord: string = '';
+
+  constructor(private router: Router,
+              public interestControllerService: InterestControllerService,
               private localeControllerService : LocaleControllerService,
               private translateService: TranslateService,
               private visibilityControllerService: ContentVisibilityControllerService,
@@ -47,7 +52,6 @@ export class TopMenuComponent implements OnInit {
     this.localeControllerService.changeCurrentLocale(locale);
   }
 
-  protected readonly console = console;
 
   changeSearchActivity() {
     this.isSearchActive = !this.isSearchActive
@@ -63,5 +67,13 @@ export class TopMenuComponent implements OnInit {
 
   logout() {
     this.userDataService.removeUserData();
+  }
+
+  openSearch() {
+    this.router.navigate(
+      [`/${this.currentInterest}/${environment.SEARCH_PAGE_PATH}/${this.searchWord}`]);
+
+    this.searchWord = '';
+    this.isSearchActive = false;
   }
 }

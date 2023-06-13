@@ -89,5 +89,14 @@
   "not-found": {
     "page-not-found": "Page not Found",
     "to-home": "Home"
+  },
+  "search": {
+    "results": "Search Results",
+    "filters": "Filters",
+    "filter-names": {
+      "status": "Status",
+      "tags": "Tags",
+      "genres": "Genres"
+    }
   }
 }

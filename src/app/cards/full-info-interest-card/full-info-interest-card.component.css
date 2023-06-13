@@ -94,8 +94,8 @@ h2, p {
 .interest-details > p {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 8;
-  line-clamp: 8;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
   -webkit-box-orient: vertical;
   margin-top: 0;
 }

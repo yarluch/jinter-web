@@ -1,0 +1,35 @@
+<div class="search-group">
+  <img src="assets/img/menu/search-icon.png"
+       alt="{{ 'menu.search' | translate }}">
+  <input type="text" name="" id="input-search" class="searchbar"
+         placeholder="{{ 'menu.search' | translate }}"
+         [(ngModel)]="searchWord"
+         (keydown.enter)="updateSearch()">
+</div>
+
+<div class="columns-wrapper">
+  <div class="сol-wide">
+    <h2>{{"search.results" | translate}}</h2>
+    <div class="search-grid">
+      <ng-container *ngFor="let interest of searchResult.entities; index as index">
+        <full-info-interest-card [interest-data]="interest"
+                                 [index]="index"></full-info-interest-card>
+      </ng-container>
+    </div>
+  </div>
+  <div class="col-narrow">
+    <h2>{{"search.filters" | translate}}</h2>
+    <div class="filter-button">
+      {{"search.filter-names.status" | translate}}
+      <img src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
+    </div>
+    <div class="filter-button">
+      {{"search.filter-names.tags" | translate}}
+      <img src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
+    </div>
+    <div class="filter-button">
+      {{"search.filter-names.genres" | translate}}
+      <img src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
+    </div>
+  </div>
+</div>

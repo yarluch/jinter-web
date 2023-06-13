@@ -34,6 +34,9 @@
   --searchbar-bg-color: #4B236A;
   --searchbar-bg-color-hover: #3b1a56;
 
+  --filter-button-text-color: #FFF;
+  --filter-button-bg-color: #051439;
+
   --review-color-1: #E2842C;
   --review-color-1-hover: #be6f24;
   --review-card-1-font-color: #FFF;
@@ -89,6 +92,9 @@
   --searchbar-bg-color: #193439;
   --searchbar-bg-color-hover: #0d2d34;
 
+  --filter-button-text-color: #280A0A;
+  --filter-button-bg-color: #DDB480;
+
   --review-color-1: #193439;
   --review-color-1-hover: #102326;
   --review-card-1-font-color: #FFF;
@@ -143,6 +149,9 @@
 
   --searchbar-bg-color: #3D7369;
   --searchbar-bg-color-hover: #285b51;
+
+  --filter-button-text-color: #FFF;
+  --filter-button-bg-color: #323232;
 
   --review-color-1: #EEEEEE;
   --review-color-1-hover: #d2caca;
@@ -319,4 +328,15 @@
 
 :host ::ng-deep .сol-wide {
   max-width: 1200px;
+}
+
+:host ::ng-deep .preloader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

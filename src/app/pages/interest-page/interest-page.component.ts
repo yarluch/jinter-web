@@ -74,8 +74,6 @@ export class InterestPageComponent implements OnInit {
         }
       );
     });
-
-    console.error('hi interest');
   }
 
   private updateTextData(locale: Locale) {

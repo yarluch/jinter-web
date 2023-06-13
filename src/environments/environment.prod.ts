@@ -8,6 +8,7 @@ export const environment = {
   PROFILE_PAGE_PATH: 'profile',
   LIST_PAGE_PATH: 'list',
   NOT_FOUND_PAGE_PATH: 'page-not-found',
+  SEARCH_PAGE_PATH: 'search',
   LOGIN: 'login',
   SIGN_UP: 'sign-up',
 

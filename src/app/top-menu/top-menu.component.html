@@ -18,7 +18,8 @@
       (click)="changeSearchActivity()">
       <input type="text" name="" id="input-search" class="searchbar"
              placeholder="{{ 'menu.search' | translate }}"
-             (keydown.enter)="console.log('')">
+             [(ngModel)]="searchWord"
+             (keydown.enter)="openSearch()">
     </div>
     <div class="buttons-group">
       <button class="menu-button" [class.active]="currentLocale === 'ua'" (click)="changeLocale('ua')">UA</button>

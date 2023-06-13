@@ -17,7 +17,6 @@ export class NotFoundPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.error('hi not found');
   }
 
 }
