@@ -4,13 +4,16 @@
     "about": "About Us",
     "search": "Search...",
     "user-menu": {
+      "profile": "Profile",
       "logout": "Logout"
     }
   },
   "main": {
     "popular": "Popular",
     "lists": "Lists",
-    "popular_authors": "Popular Authors"
+    "popular_authors": "Popular Authors",
+    "for-you": "For you",
+    "followings": "Followings"
   },
   "login-sign-up": {
     "login": "Login",
@@ -84,7 +87,9 @@
       },
       "lists": "Lists",
       "reviews": "Reviews"
-    }
+    },
+    "subscribe": "Subscribe",
+    "unsubscribe": "Unsubscribe"
   },
   "not-found": {
     "page-not-found": "Page not Found",
@@ -98,5 +103,23 @@
       "tags": "Tags",
       "genres": "Genres"
     }
+  },
+  "list-edit": {
+    "cover-color": "Cover color",
+    "privacy": "Privacy",
+    "privacy-status": {
+      "available-for-all": "Available for all",
+      "available-for-followers": "Available for followers",
+      "available-only-for-me": "Available only for me"
+    },
+    "create": "Create"
+  },
+  "favorite": {
+    "interest": {
+      "games": "Favorite games",
+      "books": "Favorite books",
+      "movies": "Favorite movies"
+    },
+    "reviews": "Reviews"
   }
 }

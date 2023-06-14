@@ -5,6 +5,8 @@ import {LocaleControllerService} from "../../services/locale-controller.service"
 import {InterestControllerService} from "../../services/interest-controller.service";
 import {Locale} from "../../types/types";
 import {environment} from "../../../environments/environment.prod";
+import {CurrentUserDataService} from "../../services/current-user-data.service";
+import {InterestService} from "../../services/api/interest.service";
 
 @Component({
   selector: 'review-card',
@@ -28,18 +30,37 @@ export class ReviewCardComponent implements OnInit {
   review!: ReviewCardData
 
   title = '';
+
+  showLikeButton = false;
+
+  heartImgPath = '';
   constructor(private localeControllerService : LocaleControllerService,
-              private interestController: InterestControllerService) {
+              private interestController: InterestControllerService,
+              private interestService: InterestService,
+              private currentUserService: CurrentUserDataService) {
     localeControllerService.getCurrentObservable().subscribe(locale => {
       this.updateReviewTitle(locale);
+    });
+
+    currentUserService.getUserObservable().subscribe(user => {
+      this.showLikeButton = user != null;
     });
   }
 
   ngOnInit(): void {
     this.updateReviewTitle(this.localeControllerService.getCurrentLocale());
     this.interest = this.interest != '' ? this.interest : this.interestController.getCurrentInterest();
+    this.updateHeart();
   }
 
+  private updateHeart() {
+    console.error(this.index + ' ' + this.review.isLikedByLoggedUser)
+    if (this.interest == 'movies') {
+      this.heartImgPath = this.review.isLikedByLoggedUser ? 'heart_filled_dark' : 'heart_dark';
+    } else {
+      this.heartImgPath = this.review.isLikedByLoggedUser ? 'heart_filled' : 'heart';
+    }
+  }
   private updateReviewTitle(locale: Locale) {
     for (const translation of this.review.interest.translations) {
       if (translation.cultureCode == locale) {
@@ -52,4 +73,16 @@ export class ReviewCardComponent implements OnInit {
   }
 
   protected readonly environment = environment;
+
+  changeIsLikedState() {
+    this.interestService.likeReview(this.review.id).subscribe(
+      data => {
+        this.review.isLikedByLoggedUser = !this.review.isLikedByLoggedUser;
+        this.updateHeart();
+      },
+      error => {
+        console.error(error)
+      }
+    );
+  }
 }

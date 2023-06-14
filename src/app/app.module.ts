@@ -30,6 +30,8 @@ import { FullInfoInterestCardComponent } from './cards/full-info-interest-card/f
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { ReviewCardComponent } from './cards/review-card/review-card.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { ListEditPageComponent } from './pages/list-edit-page/list-edit-page.component';
+import { FavoritePageComponent } from './pages/favorite-page/favorite-page.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
     FullInfoInterestCardComponent,
     ListPageComponent,
     ReviewCardComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    ListEditPageComponent,
+    FavoritePageComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +103,14 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
       {
         path: `:interest-type/${environment.SEARCH_PAGE_PATH}/:keyword`,
         component: SearchPageComponent
+      },
+      {
+        path: `:interest-type/${environment.CREATE_LIST_PATH}`,
+        component: ListEditPageComponent
+      },
+      {
+        path: `:interest-type/${environment.FAVORITE_PAGE_PATH}`,
+        component: FavoritePageComponent
       },
       {
         path: '**',

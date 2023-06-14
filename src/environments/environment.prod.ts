@@ -9,6 +9,8 @@ export const environment = {
   LIST_PAGE_PATH: 'list',
   NOT_FOUND_PAGE_PATH: 'page-not-found',
   SEARCH_PAGE_PATH: 'search',
+  CREATE_LIST_PATH: 'create-list',
+  FAVORITE_PAGE_PATH: 'favorite',
   LOGIN: 'login',
   SIGN_UP: 'sign-up',
 

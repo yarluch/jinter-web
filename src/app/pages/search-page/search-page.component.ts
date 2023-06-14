@@ -54,14 +54,6 @@ export class SearchPageComponent implements OnInit {
 
 
   updateSearch() {
-    /*this.searchService.findByKeyword(this.searchWord).subscribe(
-      data => {
-        this.searchResult = data;
-      },
-      error => {
-        console.error(error);
-      }
-    );*/
     this.router.navigate(
       [`/${this.currentInterest}/${environment.SEARCH_PAGE_PATH}/${this.searchWord}`]);
   }

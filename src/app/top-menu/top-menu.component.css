@@ -143,3 +143,42 @@
   transition-duration: var(--transition-medium-2);
 }
 
+.user-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-button > img {
+  margin-left: 9px;
+  height: 20px;
+}
+
+.context-menu {
+  position: absolute;
+  right: 0;
+  bottom: -100px;
+  background-color: var(--bg-accent-color);
+  border: 1px var(--bg-color) solid;
+  border-radius: var(--border-radius);
+
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.context-menu > button {
+  font-family: var(--content-font);
+  font-weight: var(--content-font-weight);
+  color: var(--menu-font-color);
+  background: transparent;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.context-menu > button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}

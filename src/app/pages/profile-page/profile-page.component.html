@@ -46,10 +46,17 @@
           <interest-card [interest-data]="interest"></interest-card>
         </ng-container>
       </div>
-      <div class="list collection-list" *ngSwitchCase="3">
-        <ng-container *ngFor="let list of userLists">
-          <list-card [list-data]="list"></list-card>
-        </ng-container>
+      <div class="list-wrapper" *ngSwitchCase="3">
+        <div class="list collection-list">
+          <ng-container *ngFor="let list of userLists">
+            <list-card [list-data]="list"></list-card>
+          </ng-container>
+        </div>
+        <button class="add-list-button button-simple"
+                *ngIf="currentUserService.isUserLoggedIn() && currentUserService.getUserId() == user.id"
+                (click)="openListCreationPage()">
+          <img src="assets/img/profile/plus.png" alt="">
+        </button>
       </div>
       <div class="list collection-review" *ngSwitchCase="4">
         <ng-container *ngFor="let review of userReviews; index as index">

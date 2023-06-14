@@ -51,7 +51,6 @@ h2, h3, p, div {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: pointer;
   text-decoration: none;
   display: flex;
   position: relative;
@@ -80,6 +79,10 @@ h2, h3, p, div {
   margin-bottom: 40px;
 }
 
+.review-content {
+  width: 100%;
+}
+
 .score {
   font-size: 30px;
   margin: 0 auto;
@@ -100,4 +103,14 @@ a {
 
 a:hover {
   opacity: 0.7;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-header > img {
+  cursor: pointer;
 }

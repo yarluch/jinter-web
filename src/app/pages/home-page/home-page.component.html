@@ -1,4 +1,4 @@
-<ng-container *ngIf="popularInterests.length > 0 && systemLists.length > 0 && popularAuthors.length > 0; else preloader">
+<ng-container *ngIf="popularInterests.length > 0 && systemLists.length > 0 && popularAuthors.length > 0 && recommendationsReady && reviewsReady; else preloader">
   <section class="section-wrapper" *ngIf="popularInterests.length > 0">
     <h2>{{ 'main.popular' | translate }}</h2>
     <slider [item-size]="SliderSizeSmall" [arrows]="true">
@@ -8,7 +8,7 @@
     </slider>
   </section>
 
-  <section class="section-wrapper" *ngIf="systemLists.length > 0">
+  <section class="section-wrapper">
     <h2>{{ 'main.lists' | translate }}</h2>
     <slider [item-size]="SliderSizeBig" [arrows]="true">
       <ng-container *ngFor="let list of systemLists">
@@ -25,6 +25,24 @@
         <author-card [author-data]="author"></author-card>
       </ng-container>
     </slider>
+  </section>
+
+  <section class="section-wrapper" *ngIf="userRecommendations.length > 0">
+    <h2>{{ 'main.for-you' | translate }}</h2>
+    <slider [item-size]="SliderSizeSmall" [arrows]="true">
+      <ng-container *ngFor="let interest of userRecommendations">
+        <interest-card [interest-data]="interest"></interest-card>
+      </ng-container>
+    </slider>
+  </section>
+
+  <section class="section-wrapper" *ngIf="reviews.length > 0">
+    <h2>{{ 'main.followings' | translate }}</h2>
+    <div class="reviews-list">
+      <ng-container *ngFor="let review of reviews; index as index">
+        <review-card [review]="review" [index]="index"></review-card>
+      </ng-container>
+    </div>
   </section>
 </ng-container>
 

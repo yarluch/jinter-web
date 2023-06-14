@@ -59,6 +59,7 @@
   --profile-page-header-bg: #4B236A;
 
   --button-primary-gradient-bg: linear-gradient(to right, #DA67DC 0%, #E2842C 51%, #DA67DC 100%);
+  --button-secondary-gradient-bg: linear-gradient(to right, #DA67DC 0%, #6892D0 51%, #DA67DC 100%);
   --button-simple-bg: #E2842C;
   --button-simple-bg-hover: #c27227;
 
@@ -117,6 +118,7 @@
   --profile-page-header-bg: #3F421C;
 
   --button-primary-gradient-bg: linear-gradient(to right, #AD4A2B 0%, #E2842C 51%, #AD4A2B 100%);
+  --button-secondary-gradient-bg: linear-gradient(to right, #377259 0%, #9B9B9B 51%, #377259 100%);
   --button-simple-bg: #AD4A2B;
   --button-simple-bg-hover: #bb502e;
 
@@ -175,6 +177,7 @@
   --profile-page-header-bg: #1B4E44;
 
   --button-primary-gradient-bg: linear-gradient(to right, #912AC2 0%, #31A8FF 51%, #912AC2 100%);
+  --button-secondary-gradient-bg: linear-gradient(to right, #7EBEED 0%, #B89EE1 51%, #7EBEED 100%);
   --button-simple-bg: #31A8FF;
   --button-simple-bg-hover: #2885c9;
 
@@ -309,6 +312,10 @@
   background-size: var(--button-gradient-background-size);
 }
 
+:host ::ng-deep .button-secondary {
+  background: var(--button-secondary-gradient-bg);
+  background-size: var(--button-gradient-background-size);
+}
 
 :host ::ng-deep .main-content-wrapper {
   display: block;

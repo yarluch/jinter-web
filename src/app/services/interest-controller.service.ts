@@ -49,11 +49,10 @@ export class InterestControllerService {
     this.saveCurrentInterest(interest);
 
     let url = this.router.url;
-    if (this.redirectablePages.some(page => url.includes(page))) {
+    if (this.redirectablePages.some(page => url.includes(`/${page}`))) {
       this.router.navigate([`/${interest}`]);
       return;
     }
-
     let noInterestPath = url.replace(/^(\/games|\/books|\/movies)/, '');
     let newUrl = `/${interest}${noInterestPath}`;
 

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment.prod";
 import {InterestCardData} from "../../interfaces/interest/interestCardData";
 import {InterestControllerService} from "../interest-controller.service";
@@ -20,6 +20,8 @@ import {GameReviewModel} from "../../interfaces/review/specificData/gameReviewMo
 import {ReviewCardData} from "../../interfaces/review/reviewCardData";
 import {BookReviewModel} from "../../interfaces/review/specificData/bookReviewModel";
 import {MovieReviewModel} from "../../interfaces/review/specificData/movieReviewModel";
+import {ListEditPageComponent} from "../../pages/list-edit-page/list-edit-page.component";
+import {ListEditPageData} from "../../interfaces/list/ListEditPageData";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +30,8 @@ export class InterestService {
 
   interest: string = ''
   constructor(private http: HttpClient,
-              private interestControllerService: InterestControllerService) {
+              private interestControllerService: InterestControllerService,
+              private currentUserService: CurrentUserDataService) {
     interestControllerService.getCurrentInterestObserver()
       .subscribe(interest => this.interest = interest);
   }
@@ -174,15 +177,24 @@ export class InterestService {
   }
 
   private getGameList(id: string) {
-    return this.http.get<GameListModel>(`${environment.URL}/g/recommendationlists/${id}`);
+    let token = this.currentUserService.getUserToken();
+
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<GameListModel>(`${environment.URL}/g/recommendationlists/${id}`, {headers});
   }
 
   private getBookList(id: string) {
-    return this.http.get<BookListModel>(`${environment.URL}/books/recommendationlists/${id}`);
+    let token = this.currentUserService.getUserToken();
+
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<BookListModel>(`${environment.URL}/books/recommendationlists/${id}`, {headers});
   }
 
   private getMovieList(id: string) {
-    return this.http.get<MovieListModel>(`${environment.URL}/movies/recommendationlists/${id}`);
+    let token = this.currentUserService.getUserToken();
+
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<MovieListModel>(`${environment.URL}/movies/recommendationlists/${id}`, {headers});
   }
 
   private gameListToInterestList(gameList: GameListModel): ListPageData {
@@ -239,8 +251,12 @@ export class InterestService {
   }
 
   getUserLists(userId: string) {
+    let token = this.currentUserService.getUserToken();
+    console.error(token);
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    console.error(headers);
     let path = this.interest != 'games' ? this.interest : 'g';
-    return this.http.get<Array<ListCardData>>(`${environment.URL}/${path}/recommendationlists/user/${userId}`);
+    return this.http.get<Array<ListCardData>>(`${environment.URL}/${path}/recommendationlists/user/${userId}`, {headers});
   }
 
   getUserReviews(userId: string) {
@@ -379,5 +395,138 @@ export class InterestService {
   }
   private getInterestMovieReviews(interestId: string) {
     return this.http.get<Array<MovieReviewModel>>(`${environment.URL}/movies/${interestId}/reviews`);
+  }
+
+  getUserRecommendations() {
+    let interestShort = this.interest.slice(0, this.interest.length-1);
+    let token = this.currentUserService.getUserToken();
+
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Array<InterestCardData>>(
+      `${environment.URL}/${this.interest}/user-${interestShort}-recommendations`, {headers});
+  }
+
+  getFollowingReviews() {
+    let interestShort = this.interest.slice(0, this.interest.length-1);
+    let token = this.currentUserService.getUserToken();
+    let userId = this.currentUserService.getUserId();
+
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    switch (this.interest) {
+      case 'books':
+        return this.http.get<Array<BookReviewModel>>(
+          `${environment.URL}/users/${userId}/book-reviews`, {headers}).pipe(
+          map((bookReviews: Array<BookReviewModel>): Array<ReviewCardData> => {
+            let result = Array<ReviewCardData>();
+            for (const review of bookReviews) {
+              result.push(this.bookReviewToReviewData(review));
+            }
+            return result;
+          })
+        );
+
+      case 'movies':
+        return this.http.get<Array<MovieReviewModel>>(
+          `${environment.URL}/users/${userId}/movie-reviews`, {headers}).pipe(
+          map((movieReviews: Array<MovieReviewModel>): Array<ReviewCardData> => {
+            let result = Array<ReviewCardData>();
+            for (const review of movieReviews) {
+              result.push(this.movieReviewToReviewData(review));
+            }
+            return result;
+          })
+        );
+
+      default:
+        return this.http.get<Array<GameReviewModel>>(
+          `${environment.URL}/users/${userId}/game-reviews`, {headers}).pipe(
+          map((gameReviews: Array<GameReviewModel>): Array<ReviewCardData> => {
+            let result = Array<ReviewCardData>();
+            for (const review of gameReviews) {
+              result.push(this.gameReviewToReviewData(review));
+            }
+            return result;
+          })
+        );
+    }
+  }
+
+  createList(list: ListEditPageData) {
+    let token = this.currentUserService.getUserToken();
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    let path = this.interest != 'games' ? this.interest : 'g';
+
+    const formData = new FormData();
+    formData.append('Name', list.name);
+    formData.append('NameUa', list.name);
+    formData.append('Creator', list.creator);
+    formData.append('Type', list.type.toString());
+    formData.append('PrivacyStatus', list.privacyStatus.toString());
+    formData.append('CoverColor', list.coverColor);
+    formData.append('Photo', list.photoUrl);
+
+    return this.http.post(`${environment.URL}/${path}/recommendationlists`, formData, {headers});
+  }
+
+  getFavoriteInterests() {
+    let token = this.currentUserService.getUserToken();
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Array<InterestCardData>>(`${environment.URL}/users/${this.currentUserService.getUserId()}/favourites-${this.interest}`, {headers});
+  }
+
+  getFavoriteReviews() {
+    let token = this.currentUserService.getUserToken();
+    let userId = this.currentUserService.getUserId();
+
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    switch (this.interest) {
+      case 'books':
+        return this.http.get<Array<BookReviewModel>>(
+          `${environment.URL}/users/${userId}/favourites-books-reviews`, {headers}).pipe(
+          map((bookReviews: Array<BookReviewModel>): Array<ReviewCardData> => {
+            let result = Array<ReviewCardData>();
+            for (const review of bookReviews) {
+              result.push(this.bookReviewToReviewData(review));
+            }
+            return result;
+          })
+        );
+
+      case 'movies':
+        return this.http.get<Array<MovieReviewModel>>(
+          `${environment.URL}/users/${userId}/favourites-movies-reviews`, {headers}).pipe(
+          map((movieReviews: Array<MovieReviewModel>): Array<ReviewCardData> => {
+            let result = Array<ReviewCardData>();
+            for (const review of movieReviews) {
+              result.push(this.movieReviewToReviewData(review));
+            }
+            return result;
+          })
+        );
+
+      default:
+        return this.http.get<Array<GameReviewModel>>(
+          `${environment.URL}/users/${userId}/favourites-games-reviews`, {headers}).pipe(
+          map((gameReviews: Array<GameReviewModel>): Array<ReviewCardData> => {
+            let result = Array<ReviewCardData>();
+            for (const review of gameReviews) {
+              result.push(this.gameReviewToReviewData(review));
+            }
+            return result;
+          })
+        );
+    }
+  }
+
+  likeReview(reviewId: string) {
+    let token = this.currentUserService.getUserToken();
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(
+      `${environment.URL}/${this.interest}/reviews/${reviewId}/like/${this.currentUserService.getUserId()}`,
+      {}, {headers});
   }
 }

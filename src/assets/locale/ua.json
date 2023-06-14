@@ -4,13 +4,16 @@
     "about": "Про нас",
     "search": "Пошук...",
     "user-menu": {
+      "profile": "Профіль",
       "logout": "Вийти"
     }
   },
   "main": {
     "popular": "Популярне",
     "lists": "Списки",
-    "popular_authors": "Популярні автори"
+    "popular_authors": "Популярні автори",
+    "for-you": "Для вас",
+    "followings": "Підписки"
   },
   "login-sign-up": {
     "login": "Вхід",
@@ -84,7 +87,9 @@
       },
       "lists": "Списки",
       "reviews": "Рецензії"
-    }
+    },
+    "subscribe": "Підписатись",
+    "unsubscribe": "Відписатись"
   },
   "not-found": {
     "page-not-found": "Сторінку не знайдено",
@@ -98,5 +103,23 @@
       "tags": "Теги",
       "genres": "Жанри"
     }
+  },
+  "list-edit": {
+    "cover-color": "Колір обкладинки",
+    "privacy": "Приватність",
+    "privacy-status": {
+      "available-for-all": "Доступно для всіх",
+      "available-for-followers": "Доступно для підписників",
+      "available-only-for-me": "Доступно тільки для мене"
+    },
+    "create": "Створити"
+  },
+  "favorite": {
+    "interest": {
+      "games": "Улюблені ігри",
+      "books": "Улюблені книги",
+      "movies": "Улюблені фільми"
+    },
+    "reviews": "Рецензії"
   }
 }

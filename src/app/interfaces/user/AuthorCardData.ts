@@ -3,4 +3,5 @@ export interface AuthorCardData {
   userName: string;
   description: string;
   photo: string;
+  isFollowing: boolean;
 }

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {RecommendationListType} from "../../enums/RecommendationListType";
 import {AuthorCardData} from "../../interfaces/user/AuthorCardData";
+import {CurrentUserDataService} from "../../services/current-user-data.service";
+import {UserService} from "../../services/api/user.service";
 
 @Component({
   selector: 'author-card',
@@ -9,19 +10,36 @@ import {AuthorCardData} from "../../interfaces/user/AuthorCardData";
 })
 export class AuthorCardComponent implements OnInit {
 
+  showButton = false;
   @Input('author-data')
-  data: AuthorCardData = {
-    id: "sdfsdf-sdfsdfsd-sdfsdf",
-    userName: "Uname",
-    description: "Опис профілю. Дуже цікавий профіль, власник якого робить огляди на ігри.",
-    photo: "https://wallpapercave.com/uwp/uwp935605.png"
-  }
+  data!: AuthorCardData;
 
   @Input('alternative-style')
   altStyle = false
 
-  constructor() { }
+  constructor(private currentUserService: CurrentUserDataService,
+              private userService: UserService) {
+
+  }
 
   ngOnInit(): void {
+    this.currentUserService.getUserObservable().subscribe(user => {
+      if (user) {
+        this.showButton = user.id != this.data.id;
+      } else {
+        this.showButton = false;
+      }
+    });
+  }
+
+  subscribe() {
+    this.userService.subscribe(this.data.id).subscribe(
+      data => {
+        this.data.isFollowing = !this.data.isFollowing
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 }

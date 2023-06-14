@@ -15,8 +15,9 @@ import {Router} from "@angular/router";
 })
 export class TopMenuComponent implements OnInit {
 
-  isSearchActive = false
-  isUserLoggedIn = false
+  isSearchActive = false;
+  isUserLoggedIn = false;
+  isUserContextMenuActive = false;
   userName = ''
 
   currentLocale: string = ''
@@ -58,7 +59,7 @@ export class TopMenuComponent implements OnInit {
   }
 
   openLogin() {
-    this.visibilityControllerService.setLoginSingUpState(environment.LOGIN)
+    this.visibilityControllerService.setLoginSingUpState(environment.LOGIN);
   }
 
   openSignUp() {
@@ -67,6 +68,7 @@ export class TopMenuComponent implements OnInit {
 
   logout() {
     this.userDataService.removeUserData();
+    this.isUserContextMenuActive = false;
   }
 
   openSearch() {
@@ -75,5 +77,11 @@ export class TopMenuComponent implements OnInit {
 
     this.searchWord = '';
     this.isSearchActive = false;
+  }
+
+  moveToProfile() {
+    this.isUserContextMenuActive = false;
+    this.router.navigate(
+      [`/${this.currentInterest}/${environment.PROFILE_PAGE_PATH}/${this.userDataService.getUserId()}`]);
   }
 }

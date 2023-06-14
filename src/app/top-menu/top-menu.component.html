@@ -25,14 +25,23 @@
       <button class="menu-button" [class.active]="currentLocale === 'ua'" (click)="changeLocale('ua')">UA</button>
       <button class="menu-button" [class.active]="currentLocale === 'en-GB'" (click)="changeLocale('en-GB')">EN</button>
     </div>
-    <div class="buttons-group" *ngIf="!isUserLoggedIn; else userMenu">
-      <button class="menu-button" (click)="openLogin()">{{ 'login-sign-up.login' | translate }}</button>
-      <div class="menu-divider"></div>
-      <button class="menu-button primary" (click)="openSignUp()">{{ 'login-sign-up.sign-up' | translate }}</button>
+    <div class="buttons-group">
+      <ng-container *ngIf="!isUserLoggedIn; else userMenu">
+        <button class="menu-button" (click)="openLogin()">{{ 'login-sign-up.login' | translate }}</button>
+        <div class="menu-divider"></div>
+        <button class="menu-button primary" (click)="openSignUp()">{{ 'login-sign-up.sign-up' | translate }}</button>
+      </ng-container>
     </div>
     <ng-template #userMenu>
-      <!--<button class="menu-button primary" (click)="logout()">{{userName}}</button>-->
-      <button class="menu-button primary" (click)="logout()">{{ 'menu.user-menu.logout' | translate }}</button>
+      <button class="menu-button primary user-button" (click)="isUserContextMenuActive = !isUserContextMenuActive">
+        {{userName}}
+        <img src="assets/img/menu/arrow-icon.png" alt="">
+      </button>
+      <div class="context-menu" *ngIf="isUserContextMenuActive">
+        <button (click)="moveToProfile()">{{ 'menu.user-menu.profile' | translate }}</button>
+        <button (click)="logout()">{{ 'menu.user-menu.logout' | translate }}</button>
+      </div>
+      <!--<button class="menu-button primary" ></button>-->
     </ng-template>
   </div>
 </header>

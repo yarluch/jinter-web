@@ -15,9 +15,13 @@
   </div>
 
   <div class="review-content">
-    <a [routerLink]="['/' + interest, environment.INTEREST_PAGE_PATH, review.interest.id]">
-      <h2 class="game-title">{{title}}</h2>
-    </a>
+    <div class="content-header">
+      <a [routerLink]="['/' + interest, environment.INTEREST_PAGE_PATH, review.interest.id]">
+        <h2 class="game-title">{{title}}</h2>
+      </a>
+      <img src="/assets/img/review/{{heartImgPath}}.png" alt="" (click)="changeIsLikedState()">
+    </div>
+
     <p>{{review.reviewDescription}}</p>
   </div>
 </div>

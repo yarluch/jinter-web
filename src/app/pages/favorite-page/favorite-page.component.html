@@ -1,0 +1,30 @@
+<ng-container *ngIf="interests.length > 0 && reviews.length > 0; else preloader">
+  <section class="section-wrapper" *ngIf="interests.length > 0">
+    <h2>{{ 'favorite.interest.' + currentInterest | translate }}</h2>
+    <slider [item-size]="SliderSizeSmall" [arrows]="true">
+      <ng-container *ngFor="let interest of interests">
+        <interest-card [interest-data]="interest"></interest-card>
+      </ng-container>
+    </slider>
+  </section>
+
+  <section class="section-wrapper" *ngIf="reviews.length > 0">
+    <h2>{{ 'main.followings' | translate }}</h2>
+    <div class="reviews-list">
+      <ng-container *ngFor="let review of reviews; index as index">
+        <review-card [review]="review" [index]="index"></review-card>
+      </ng-container>
+    </div>
+  </section>
+</ng-container>
+
+<ng-template #preloader>
+  <div class="preloader">
+    <lord-icon
+      src="https://cdn.lordicon.com/dpinvufc.json"
+      trigger="loop"
+      colors="primary:{{currentInterest == 'books' ? '#280A0A' : '#ffffff'}}#121331,secondary:#08a88a"
+      style="width:250px;height:250px">
+    </lord-icon>
+  </div>
+</ng-template>

@@ -1,0 +1,52 @@
+<div class="content-wrapper">
+  <header class="page-header"
+          [style]="{'background': '#' + listData.coverColor}">
+    <input type="text" name="" id="" [(ngModel)]="listData.name">
+    <img src="{{listData.photoUrl}}" alt="" *ngIf="listData.photoUrl">
+  </header>
+  <div class="list-body">
+    <h2>{{"list-edit.cover-color" | translate}}</h2>
+    <div class="colors-block">
+      <div class="color"
+           [class.active]="listData.coverColor == currentColorArray[0]"
+           [style]="{'background': '#' + currentColorArray[0] ?? '#E2842C'}"
+           (click)="listData.coverColor = currentColorArray[0]"></div>
+      <div class="color"
+           [class.active]="listData.coverColor == currentColorArray[1]"
+           [style]="{'background': '#' + currentColorArray[1] ?? '#E2842C'}"
+           (click)="listData.coverColor = currentColorArray[1]"></div>
+      <div class="color"
+           [class.active]="listData.coverColor == currentColorArray[2]"
+           [style]="{'background': '#' + currentColorArray[2] ?? '#E2842C'}"
+           (click)="listData.coverColor = currentColorArray[2]"></div>
+      <div class="color"
+           [class.active]="listData.coverColor == currentColorArray[3]"
+           [style]="{'background': '#' + currentColorArray[3] ?? '#E2842C'}"
+           (click)="listData.coverColor = currentColorArray[3]"></div>
+    </div>
+
+    <h2>{{"list-edit.privacy" | translate}}</h2>
+    <div class="input-group radio">
+      <div class="radio-group">
+        <input type="radio" id="available-for-all" name="PrivacyStatus" value="0"
+               [checked]="listData.privacyStatus === availableForAll"
+               (click)="listData.privacyStatus = availableForAll">
+        <label for="available-for-all">{{"list-edit.privacy-status.available-for-all" | translate}}</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" id="available-for-followers" name="PrivacyStatus" value="1"
+               [checked]="listData.privacyStatus === availableForFollowers"
+               (click)="listData.privacyStatus = availableForFollowers">
+        <label for="available-for-followers">{{"list-edit.privacy-status.available-for-followers" | translate}}</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" id="available-only-for-me" name="PrivacyStatus" value="2"
+               [checked]="listData.privacyStatus === availableOnlyForMe"
+               (click)="listData.privacyStatus = availableOnlyForMe">
+        <label for="available-only-for-me">{{"list-edit.privacy-status.available-only-for-me" | translate}}</label>
+      </div>
+    </div>
+
+    <button class="button button-primary" (click)="createList()">{{"list-edit.create" | translate}}</button>
+  </div>
+</div>

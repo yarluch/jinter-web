@@ -8,6 +8,8 @@ import {InterestService} from "../../services/api/interest.service";
 import {ListCardData} from "../../interfaces/list/listCardData";
 import {Interest} from "../../types/types";
 import {ReviewCardData} from "../../interfaces/review/reviewCardData";
+import {CurrentUserDataService} from "../../services/current-user-data.service";
+import {environment} from "../../../environments/environment.prod";
 
 @Component({
   selector: 'app-profile-page',
@@ -29,7 +31,8 @@ export class ProfilePageComponent implements OnInit {
   constructor(private userService: UserService,
               private interestService: InterestService,
               private interestControllerService: InterestControllerService,
-              private router: Router, private route: ActivatedRoute) {
+              private router: Router, private route: ActivatedRoute,
+              public currentUserService: CurrentUserDataService) {
     interestControllerService.getCurrentInterestObserver().subscribe(interest =>
       this.interest = interest
     );
@@ -79,4 +82,7 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
+  openListCreationPage() {
+    this.router.navigate([`/${this.interest}/${environment.CREATE_LIST_PATH}`]);
+  }
 }

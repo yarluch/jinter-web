@@ -9,5 +9,9 @@
     <h3 class="username">{{'@' + data['userName']}}</h3>
   </a>
   <p>{{data['description']}}</p>
-  <button class="button button-primary" type="submit">Підписатись</button>
+  <button class="button"
+          *ngIf="showButton"
+          [class]="data.isFollowing ? 'button-secondary' : 'button-primary'"
+          (click)="subscribe()"
+          type="submit">{{(data.isFollowing ? "profile.unsubscribe" : "profile.subscribe") | translate}}</button>
 </div>
