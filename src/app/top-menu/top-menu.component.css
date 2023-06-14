@@ -157,7 +157,7 @@
 .context-menu {
   position: absolute;
   right: 0;
-  bottom: -100px;
+  bottom: -130px;
   background-color: var(--bg-accent-color);
   border: 1px var(--bg-color) solid;
   border-radius: var(--border-radius);

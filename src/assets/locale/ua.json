@@ -5,6 +5,7 @@
     "search": "Пошук...",
     "user-menu": {
       "profile": "Профіль",
+      "favorite": "Улюблене",
       "logout": "Вийти"
     }
   },

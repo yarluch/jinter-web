@@ -39,6 +39,7 @@
       </button>
       <div class="context-menu" *ngIf="isUserContextMenuActive">
         <button (click)="moveToProfile()">{{ 'menu.user-menu.profile' | translate }}</button>
+        <button (click)="moveToFavorite()">{{ 'menu.user-menu.favorite' | translate }}</button>
         <button (click)="logout()">{{ 'menu.user-menu.logout' | translate }}</button>
       </div>
       <!--<button class="menu-button primary" ></button>-->

@@ -84,4 +84,9 @@ export class TopMenuComponent implements OnInit {
     this.router.navigate(
       [`/${this.currentInterest}/${environment.PROFILE_PAGE_PATH}/${this.userDataService.getUserId()}`]);
   }
+
+  moveToFavorite() {
+    this.router.navigate(
+      [`/${this.currentInterest}/${environment.FAVORITE_PAGE_PATH}`]);
+  }
 }
