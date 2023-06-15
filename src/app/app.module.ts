@@ -6,7 +6,7 @@ import {TopMenuComponent} from './top-menu/top-menu.component';
 import {NgOptimizedImage} from "@angular/common";
 import {MissingTranslationHandler, TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {MissingTranslationService} from "./services/missing-translation.service";
 import {InterestCardComponent} from './cards/interest-card/interest-card.component';
 import {SliderComponent} from './slider/slider.component';
@@ -33,6 +33,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ListEditPageComponent } from './pages/list-edit-page/list-edit-page.component';
 import { FavoritePageComponent } from './pages/favorite-page/favorite-page.component';
 import { AddToListModalComponent } from './modals/add-to-list-modal/add-to-list-modal.component';
+import {HttpHeaderInterceptor} from "./services/http-header-interceptor";
 
 @NgModule({
   declarations: [
@@ -122,7 +123,14 @@ import { AddToListModalComponent } from './modals/add-to-list-modal/add-to-list-
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [{provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}],
+  providers: [
+    {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpHeaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
