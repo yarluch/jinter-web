@@ -32,6 +32,7 @@ import { ReviewCardComponent } from './cards/review-card/review-card.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ListEditPageComponent } from './pages/list-edit-page/list-edit-page.component';
 import { FavoritePageComponent } from './pages/favorite-page/favorite-page.component';
+import { AddToListModalComponent } from './modals/add-to-list-modal/add-to-list-modal.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { FavoritePageComponent } from './pages/favorite-page/favorite-page.compo
     ReviewCardComponent,
     SearchPageComponent,
     ListEditPageComponent,
-    FavoritePageComponent
+    FavoritePageComponent,
+    AddToListModalComponent
   ],
   imports: [
     BrowserModule,

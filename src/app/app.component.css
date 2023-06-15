@@ -347,3 +347,37 @@
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 1600px) {
+  :host ::ng-deep .main-content-wrapper {
+    max-width: 1250px;
+  }
+
+  :host ::ng-deep .сol-narrow {
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  :host ::ng-deep .main-content-wrapper {
+    max-width: 1000px;
+  }
+
+  :host ::ng-deep .narrow-content-wrapper {
+    max-width: 1000px;
+  }
+
+  :host ::ng-deep .сol-narrow {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  :host ::ng-deep .main-content-wrapper {
+    max-width: 800px;
+  }
+
+  :host ::ng-deep .narrow-content-wrapper {
+    max-width: 800px;
+  }
+}

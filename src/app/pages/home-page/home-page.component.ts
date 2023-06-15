@@ -56,7 +56,7 @@ export class HomePageComponent implements OnInit {
             this.userRecommendations = data
           },
           error => {
-            alert('Error occurred');
+            console.error('Error occurred');
           }
         );
 
@@ -65,7 +65,7 @@ export class HomePageComponent implements OnInit {
             this.reviews = data
           },
           error => {
-            alert('Error occurred');
+            console.error('Error occurred');
           }
         );
       } else {
@@ -84,7 +84,7 @@ export class HomePageComponent implements OnInit {
           this.popularInterests = data
         },
         error => {
-          alert('Error occurred');
+          console.error('Error occurred');
         }
       );
 
@@ -93,7 +93,7 @@ export class HomePageComponent implements OnInit {
           this.systemLists = data
         },
         error => {
-          alert('Error occurred');
+          console.error('Error occurred');
         }
       );
 
@@ -102,7 +102,7 @@ export class HomePageComponent implements OnInit {
           this.popularAuthors = data
         },
         error => {
-          alert('Error occurred');
+          console.error('Error occurred');
         }
       );
 
@@ -113,7 +113,7 @@ export class HomePageComponent implements OnInit {
             this.recommendationsReady = true;
           },
           error => {
-            alert('Error occurred');
+            console.error('Error occurred');
           }
         );
 
@@ -123,7 +123,7 @@ export class HomePageComponent implements OnInit {
             this.reviewsReady = true;
           },
           error => {
-            alert('Error occurred');
+            console.error('Error occurred');
           }
         );
       } else {

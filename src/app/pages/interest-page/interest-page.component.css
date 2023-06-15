@@ -7,11 +7,18 @@
   position: fixed;
 }
 
-.photo-wrapper > img {
+.photo-wrapper > .interest-photo {
   width: 100%;
   border-radius: var(--border-radius);
   aspect-ratio: 7/10;
   object-fit: cover;
+}
+
+.photo-wrapper > .heart {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
 }
 
 .list-menu-group {
@@ -28,7 +35,7 @@
 .content-wrapper {
   box-sizing: border-box;
   padding-left: 20px;
-  margin-left: auto;
+  margin-left: 300px;
 }
 
 .content-header {
@@ -91,4 +98,25 @@ h2 {
 .reviews-list > * {
   display: block;
   margin: 14px 0;
+}
+
+
+@media only screen and (max-width: 1600px) {
+  .content-wrapper {
+    margin-left: 250px;
+  }
+
+  :host ::ng-deep .сol-narrow {
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .content-wrapper {
+    margin-left: 200px;
+  }
+
+  :host ::ng-deep .сol-narrow {
+    width: 200px;
+  }
 }

@@ -54,6 +54,10 @@
     }
   },
   "interest": {
+    "to-list": "To list",
+    "to-list-dialog": {
+      "lists": "Lists"
+    },
     "genres": "Genres",
     "similar": {
       "games": "Similar games",
@@ -97,12 +101,17 @@
     "to-home": "Home"
   },
   "search": {
+    "search": "Search",
     "results": "Search Results",
     "filters": "Filters",
     "filter-names": {
       "status": "Status",
       "tags": "Tags",
       "genres": "Genres"
+    },
+    "status-values": {
+      "franchise": "Franchise",
+      "not-franchise": "Not a franchise"
     }
   },
   "list-edit": {
@@ -122,5 +131,9 @@
       "movies": "Favorite movies"
     },
     "reviews": "Reviews"
+  },
+  "about": {
+    "slogan": "Tracking and tracking hobbies in convenient applications",
+    "download-app": "Download android app"
   }
 }

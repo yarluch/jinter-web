@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {RecommendationListType} from "../../enums/RecommendationListType";
 import {ReviewCardData} from "../../interfaces/review/reviewCardData";
 import {LocaleControllerService} from "../../services/locale-controller.service";
 import {InterestControllerService} from "../../services/interest-controller.service";
@@ -43,7 +42,7 @@ export class ReviewCardComponent implements OnInit {
     });
 
     currentUserService.getUserObservable().subscribe(user => {
-      this.showLikeButton = user != null;
+      this.showLikeButton = user != null && user.id != this.review.author.id;
     });
   }
 
@@ -51,11 +50,11 @@ export class ReviewCardComponent implements OnInit {
     this.updateReviewTitle(this.localeControllerService.getCurrentLocale());
     this.interest = this.interest != '' ? this.interest : this.interestController.getCurrentInterest();
     this.updateHeart();
+    this.showLikeButton = this.currentUserService.getUserId() != null && this.currentUserService.getUserId() != this.review.author.id;
   }
 
   private updateHeart() {
-    console.error(this.index + ' ' + this.review.isLikedByLoggedUser)
-    if (this.interest == 'movies') {
+    if (this.interest == 'movies' && this.index % 4 == 0) {
       this.heartImgPath = this.review.isLikedByLoggedUser ? 'heart_filled_dark' : 'heart_dark';
     } else {
       this.heartImgPath = this.review.isLikedByLoggedUser ? 'heart_filled' : 'heart';

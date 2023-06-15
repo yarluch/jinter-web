@@ -1,10 +1,15 @@
 <div *ngIf="interestData; else preloader" style="width: 100%">
+  <add-to-list-modal *ngIf="showLoggedUserThings" [interest-id]="interestData.id"></add-to-list-modal>
   <div class="photo-wrapper сol-narrow">
-    <img src="{{interestData.mainPhotoUrl ??
+    <img
+      class="heart"
+      *ngIf="showLoggedUserThings"
+      src="/assets/img/review/{{heartImgPath}}.png" alt="" (click)="changeIsLikedState()">
+    <img class="interest-photo" src="{{interestData.mainPhotoUrl ??
   'https://assets-prd.ignimgs.com/2020/09/29/genshin-impact-button-fin-1601346152039.jpg'}}" alt="main photo">
 
-    <div class="list-menu-group">
-      <button class="button button-simple">В добірку</button>
+    <div class="list-menu-group" *ngIf="showLoggedUserThings">
+      <button class="button button-simple" (click)="showAddToListDialog()">{{"interest.to-list" | translate}}</button>
     </div>
 
   </div>

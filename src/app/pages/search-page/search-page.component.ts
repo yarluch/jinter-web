@@ -7,8 +7,10 @@ import {InterestService} from "../../services/api/interest.service";
 import {RecommendationService} from "../../services/api/recommendation.service";
 import {SearchService} from "../../services/api/search.service";
 import {SearchAnswerModel} from "../../interfaces/search/searchAnswerModel";
-import {Interest} from "../../types/types";
+import {Interest, Locale} from "../../types/types";
 import {environment} from "../../../environments/environment.prod";
+import {Filter} from "../../interfaces/search/filter";
+import {Tag} from "../../interfaces/interest/tags/tag";
 
 @Component({
   selector: 'search-page',
@@ -22,6 +24,18 @@ export class SearchPageComponent implements OnInit {
 
   searchResult!: SearchAnswerModel;
   searchWord = '';
+
+  franchiseFilter: Filter = {
+    type: "franchiseStatus",
+    value: {
+      isFranchise: undefined
+    }
+  }
+
+  genres: Array<Tag> = [];
+  genresActive: Array<boolean> = [];
+
+  areFiltersAvailable = [false, false, false];
 
   currentInterest!: Interest;
 
@@ -50,11 +64,66 @@ export class SearchPageComponent implements OnInit {
         }
       );
     });
+
+    this.searchService.getGenres().subscribe(
+      data => {
+        this.genres = data;
+        this.genresActive = Array(this.genres.length)
+        this.localeControllerService.getCurrentObservable().subscribe(locale =>
+          this.updateGenresNames(locale)
+        );
+
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
+  updateGenresNames(locale: Locale) {
+    for (let genre of this.genres) {
+      for (let translation of genre.translations) {
+        if (translation.cultureCode == locale) {
+          genre.name = translation.name;
+          break;
+        }
+      }
+    }
+  }
 
   updateSearch() {
-    this.router.navigate(
-      [`/${this.currentInterest}/${environment.SEARCH_PAGE_PATH}/${this.searchWord}`]);
+    let filters: Array<Filter> = Array();
+    filters.push({
+      type: "name",
+      value: this.searchWord
+    });
+
+    if (this.franchiseFilter.value.isFranchise !== undefined) {
+      filters.push(this.franchiseFilter);
+    }
+
+    let genres: Array<string> = Array();
+
+    for (let i = 0; i < this.genres.length; i++) {
+      if (this.genresActive[i]) {
+        genres.push(this.genres[i].id);
+      }
+    }
+
+    if (genres.length > 0) {
+      filters.push({
+        type: "genres",
+        value: genres
+      });
+    }
+
+    this.searchService.findAndFilter(filters).subscribe(
+      data => {
+        this.searchResult = data;
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 }

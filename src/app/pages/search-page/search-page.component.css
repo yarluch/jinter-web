@@ -85,7 +85,25 @@
   align-items: center;
 }
 
-.filter-button > img {
+.arrow-icon {
   height: 70px;
   width: auto;
+}
+
+.filter-checkboxes {
+  margin-left: 40px;
+}
+
+.filter-checkboxes > .filter-button {
+  padding: 10px 16px;
+}
+
+.filter-checkboxes > .filter-button > img {
+  height: 22px;
+}
+
+.button-wrapper {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
 }

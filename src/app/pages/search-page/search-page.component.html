@@ -19,17 +19,41 @@
   </div>
   <div class="col-narrow">
     <h2>{{"search.filters" | translate}}</h2>
-    <div class="filter-button">
+    <div class="filter-button" (click)="areFiltersAvailable[0] = !areFiltersAvailable[0]">
       {{"search.filter-names.status" | translate}}
-      <img src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
+      <img class="arrow-icon" src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
     </div>
-    <div class="filter-button">
+    <div *ngIf="areFiltersAvailable[0]" class="filter-checkboxes">
+      <div class="filter-button" (click)="franchiseFilter.value.isFranchise = franchiseFilter.value.isFranchise === false ? undefined : false">
+        {{"search.status-values.not-franchise" | translate}}
+        <img *ngIf="franchiseFilter.value.isFranchise == false" src="assets/img/search/check-mark.png" alt="">
+      </div>
+      <div class="filter-button" (click)="franchiseFilter.value.isFranchise = franchiseFilter.value.isFranchise ? undefined : true" >
+        {{"search.status-values.franchise" | translate}}
+        <img *ngIf="franchiseFilter.value.isFranchise == true" src="assets/img/search/check-mark.png" alt="">
+      </div>
+    </div>
+    <!--<div class="filter-button">
       {{"search.filter-names.tags" | translate}}
-      <img src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
-    </div>
-    <div class="filter-button">
+      <img class="arrow-icon" src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
+    </div>-->
+    <div class="filter-button" (click)="areFiltersAvailable[2] = !areFiltersAvailable[2]">
       {{"search.filter-names.genres" | translate}}
-      <img src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
+      <img class="arrow-icon" src="assets/img/arrows/{{currentInterest}}-arrow-right.png">
+    </div>
+    <div *ngIf="areFiltersAvailable[2]" class="filter-checkboxes">
+      <ng-container *ngFor="let genre of genres; index as index">
+        <div class="filter-button" (click)="genresActive[index] = !genresActive[index]">
+          {{genre.name}}
+          <img *ngIf="genresActive[index]" src="assets/img/search/check-mark.png" alt="">
+        </div>
+      </ng-container>
+    </div>
+    <div class="button-wrapper">
+      <button class="button button-primary"
+              (click)="updateSearch()">
+        {{"search.search" | translate}}
+      </button>
     </div>
   </div>
 </div>

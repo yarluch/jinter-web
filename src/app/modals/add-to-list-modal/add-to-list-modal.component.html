@@ -1,0 +1,10 @@
+<div class="list-wrapper">
+  <img class="close-button"
+    src="assets/img/add-to-list/close.png" alt="" (click)="closeDialog()">
+  <ng-container *ngFor="let list of userLists; index as index">
+    <button
+            (click)="addToList(list.id)"
+            class="list-button">{{list.name}}</button>
+  </ng-container>
+
+</div>

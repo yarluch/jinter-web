@@ -47,6 +47,30 @@ export class SliderComponent implements AfterViewInit {
       autoplay: this.autoplay,
       autoplaySpeed: 3000,
       pauseOnHover: true,
+      responsive: [
+        {
+          breakpoint: 1300,
+          settings: {
+            slidesToShow: this.getItemsAmountToShow1300(),
+            slidesToScroll: this.getItemsAmountToShow1300(),
+            infinite: true,
+          }
+        },
+        {
+          breakpoint: 800,
+          settings: {
+            slidesToShow: this.getItemsAmountToShow800(),
+            slidesToScroll: this.getItemsAmountToShow800()
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: this.getItemsAmountToShow600(),
+            slidesToScroll: this.getItemsAmountToShow600()
+          }
+        }
+      ]
     });
   }
 
@@ -62,6 +86,57 @@ export class SliderComponent implements AfterViewInit {
         return 3
       case SliderItemSize.VERY_BIG:
         return 2
+      default:
+        return 1
+    }
+  }
+
+  private getItemsAmountToShow1300(): number {
+    switch (this.itemSize) {
+      case SliderItemSize.SMALL:
+        return 5
+      case SliderItemSize.MEDIUM:
+        return 4
+      case SliderItemSize.MEDIUM_2:
+        return 3
+      case SliderItemSize.BIG:
+        return 2
+      case SliderItemSize.VERY_BIG:
+        return 2
+      default:
+        return 1
+    }
+  }
+
+  private getItemsAmountToShow800(): number {
+    switch (this.itemSize) {
+      case SliderItemSize.SMALL:
+        return 4
+      case SliderItemSize.MEDIUM:
+        return 3
+      case SliderItemSize.MEDIUM_2:
+        return 3
+      case SliderItemSize.BIG:
+        return 2
+      case SliderItemSize.VERY_BIG:
+        return 2
+      default:
+        return 1
+    }
+  }
+
+  private getItemsAmountToShow600(): number {
+    switch (this.itemSize) {
+      case SliderItemSize.SMALL:
+        return 3
+      case SliderItemSize.MEDIUM:
+        return 2
+      case SliderItemSize.MEDIUM_2:
+        return 2
+      case SliderItemSize.BIG:
+        return 1
+      case SliderItemSize.VERY_BIG:
+        return 1
       default:
         return 1
     }

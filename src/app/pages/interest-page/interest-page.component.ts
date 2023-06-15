@@ -10,6 +10,8 @@ import {Locale} from "../../types/types";
 import {RecommendationPageData} from "../../interfaces/recommendation/recommendationPageData";
 import {RecommendationService} from "../../services/api/recommendation.service";
 import {ReviewCardData} from "../../interfaces/review/reviewCardData";
+import {CurrentUserDataService} from "../../services/current-user-data.service";
+import {ContentVisibilityControllerService} from "../../services/content-visibility-controller.service";
 
 
 @Component({
@@ -27,16 +29,22 @@ export class InterestPageComponent implements OnInit {
   recommendations!: RecommendationPageData;
   interestReviews: Array<ReviewCardData> = Array();
 
-
   title = '';
   description = '';
+
+  showLoggedUserThings = false;
+  heartImgPath: string = '';
+
+  isAddToListDialogVisible = false;
 
   constructor(private router: Router, private route: ActivatedRoute,
               private location: Location,
               private localeControllerService : LocaleControllerService,
               private interestControllerService: InterestControllerService,
               private interestService: InterestService,
-              private recommendationService: RecommendationService) {
+              private recommendationService: RecommendationService,
+              private currentUserService: CurrentUserDataService,
+              private visibilityControllerService :ContentVisibilityControllerService) {
     this.class = "main-content-wrapper"
 
     interestControllerService.getCurrentInterestObserver().subscribe(interest => {
@@ -46,6 +54,14 @@ export class InterestPageComponent implements OnInit {
     localeControllerService.getCurrentObservable().subscribe(locale => {
       this.updateTextData(locale);
     });
+
+    currentUserService.getUserObservable().subscribe(user => {
+      this.showLoggedUserThings = user != null;
+    });
+
+    visibilityControllerService.getIsDialogBlackoutActive().subscribe(isActive=> {
+      this.isAddToListDialogVisible = isActive;
+    })
   }
 
   ngOnInit(): void {
@@ -58,6 +74,8 @@ export class InterestPageComponent implements OnInit {
 
           this.updateTextData(this.localeControllerService.getCurrentLocale());
 
+          this.heartImgPath = this.interestData.isLiked ? 'heart_filled' : 'heart';
+
           this.getRecommendations();
         },
         error => {
@@ -65,15 +83,19 @@ export class InterestPageComponent implements OnInit {
         }
       );
 
+
+
       this.interestService.getInterestReviews(params['interestId']).subscribe(
         data => {
           this.interestReviews = data;
         },
         error => {
-          alert('Error occurred ' + error);
+          console.error('Error occurred ' + error);
         }
       );
     });
+
+
   }
 
   private updateTextData(locale: Locale) {
@@ -105,4 +127,21 @@ export class InterestPageComponent implements OnInit {
 
   protected readonly MEDIUM = SliderItemSize.MEDIUM;
   protected readonly MEDIUM_2 = SliderItemSize.MEDIUM_2;
+
+  changeIsLikedState() {
+    this.interestService.likeInterest(this.interestData.id).subscribe(
+      data => {
+        this.interestData.isLiked = !this.interestData.isLiked;
+        this.heartImgPath = this.interestData.isLiked ? 'heart_filled' : 'heart';
+      },
+      error => {
+        console.error(error)
+      }
+    );
+
+  }
+
+  showAddToListDialog() {
+    this.visibilityControllerService.setIsDialogBlackoutActive(true);
+  }
 }

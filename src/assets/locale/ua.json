@@ -54,6 +54,10 @@
     }
   },
   "interest": {
+    "to-list": "В список",
+    "to-list-dialog": {
+      "lists": "Списки"
+    },
     "genres": "Жанри",
     "similar": {
       "games": "Схожі ігри",
@@ -97,12 +101,17 @@
     "to-home": "На головну"
   },
   "search": {
+    "search": "Пошук",
     "results": "Результати пошуку",
     "filters": "Фільтри",
     "filter-names": {
       "status": "Статус",
       "tags": "Теги",
       "genres": "Жанри"
+    },
+    "status-values": {
+      "franchise": "Франшиза",
+      "not-franchise": "Не франшиза"
     }
   },
   "list-edit": {
@@ -122,5 +131,9 @@
       "movies": "Улюблені фільми"
     },
     "reviews": "Рецензії"
+  },
+  "about": {
+    "slogan": "Трекінг та відстеження хобі у зручних застосунках",
+    "download-app": "Завантажити мобільний застосунок"
   }
 }
