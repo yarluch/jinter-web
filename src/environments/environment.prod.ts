@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
 
-  /*URL: "http://localhost:5099",*/
-  URL: "https://2587-88-64-187-251.ngrok-free.app",
+  URL: "http://localhost:5099",
+  /*URL: "https://2587-88-64-187-251.ngrok-free.app",*/
 
   ABOUT_PAGE_PATH: 'about',
   INTEREST_PAGE_PATH: 'interest',
